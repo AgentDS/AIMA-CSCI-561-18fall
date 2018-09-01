@@ -9,8 +9,6 @@ import unittest
 import HW1a.simple_reflex_agent as sra
 
 
-
-
 class MyTestCase(unittest.TestCase):
     def test_get_percept(self):
         """Test get_percept"""
