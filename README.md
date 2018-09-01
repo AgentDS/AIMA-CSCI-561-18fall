@@ -5,7 +5,7 @@ by Prof. Sheila Tejada
 
 [![Build Status](https://travis-ci.com/AgentDS/AIMA-CSCI-561-18fall.svg?token=Zdxzuh6yQ7NxpAUZUUKb&branch=master)](https://travis-ci.com/AgentDS/AIMA-CSCI-561-18fall)
 
-
+Travis CI: https://travis-ci.com/AgentDS/AIMA-CSCI-561-18fall
 
 Python implementation for CSCI 561 Foundations of Artificial Intelligence 2018fall assignments.
 
