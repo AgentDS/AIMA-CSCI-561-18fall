@@ -5,3 +5,9 @@
 # @Contact : zszxlsq@gmail.com
 # @File    : hw1cs561f2018.py
 # @Software: PyCharm
+
+import pilot_scooter as ps
+
+if __name__=='__main__':
+    in_path = 'input1.txt'
+    problem = ps.problem_generator(in_path)

@@ -6,16 +6,16 @@
 # @File    : pilot_scooter.py
 # @Software: PyCharm
 
-import numpy as np
 from __future__ import print_function
+import numpy as np
 
 
-class Scooter_Problem(object):
+class ScooterProblem(object):
     def __init__(self, N, P, S, locations):
         self.N = N  # the width and height of the n x n city area
         self.P = P  # number of police officers
         self.S = S  # number of scooters
-        self.location = self._make_location(locations)
+        self.location = self._make_location(locations)  # list of S elements, each element is a 12 x 2 np.ndarray
 
     def _make_location(self, locations):
         return [locations[s:s + 12, :] for s in range(self.S)]
@@ -33,5 +33,9 @@ def problem_generator(in_path):
             S = int(line.strip())  # number of scooters
 
     locations = np.loadtxt(in_path, np.int, delimiter=',', skiprows=3)
-    return Scooter_Problem(N, P, S, locations)
+    return ScooterProblem(N, P, S, locations)
 
+
+def problem_output(m, out_path):
+    with open(out_path, 'w') as out_f:
+        print('%d' % m, end='', file=out_f)
