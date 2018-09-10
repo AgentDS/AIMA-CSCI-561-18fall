@@ -21,7 +21,7 @@ class Scooter_Problem(object):
         return [locations[s:s + 12, :] for s in range(self.S)]
 
 
-def generate_problem(in_path):
+def problem_generator(in_path):
     line_ct = 0
     for line in open(in_path, 'r'):
         line_ct += 1
