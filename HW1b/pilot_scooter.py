@@ -11,13 +11,13 @@ import numpy as np
 
 
 class ScooterProblem(object):
-    def __init__(self, N, P, S, locations):
+    def __init__(self, N, P, S, scooter_locations):
         self.N = N  # the width and height of the n x n city area
         self.P = P  # number of police officers
         self.S = S  # number of scooters
         # list of 12 elements, each element is 5 2x1 np.ndarray
-        self.idx_location = self._make_idx_location(locations)
-        self.smap = SLocationMap(self.N, self.idx_location)
+        self.sidx_location = self._make_idx_location(scooter_locations)
+        self.smap = SLocationMap(self.N, self.sidx_location)
         self.omap = None
 
     def _make_idx_location(self, locations):
