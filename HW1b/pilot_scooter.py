@@ -15,88 +15,72 @@ class ScooterProblem(object):
         self.N = N  # the width and height of the n x n city area
         self.P = P  # number of police officers
         self.S = S  # number of scooters
-        self.idx_location = self._make_location2(locations)
-        location1 = self._make_location1(locations)  # list of S elements, each element is a 12 x 2 np.ndarray
-        self.smap = SLocationMap(self.N, location1)
+        # list of 12 elements, each element is 5 2x1 np.ndarray
+        self.idx_location = self._make_idx_location(locations)
+        self.smap = SLocationMap(self.N, self.idx_location)
         self.omap = None
 
-
-    def _make_location1(self, locations):
-        return [locations[s:s + 12, :] for s in range(self.S)]
-
-    def _make_location2(self, locations):
+    def _make_idx_location(self, locations):
         return [[locations[t + 12 * s] for s in range(self.S)] for t in range(12)]
 
 
 class SLocationMap(object):
     """location map for scooters"""
 
-    def __init__(self, N, locations):
+    def __init__(self, N, idx_location):
+        """
+
+        :param N:
+        :param idx_location: list with length 12, each element is self.S 2x1 np.ndarray
+        """
         self.N = N
-        self.S = len(locations)
-        self.bin_str_map = self._idx2bin_str(locations)
-        self.int_map = self._bin_str2int(self.bin_str_map)
+        self.S = len(idx_location)
+        self.mat_map = self._idx2map(idx_location)
 
-    def _idx2bin_str(self, locations):
-        N = self.N
-        bin_str_map = [['0' * N for n in range(N)] for i in range(12)]
-        for scooter in locations:
-            for t in range(12):
-                # for each location index of scooter, [col, row]
-                col = scooter[t, 0]
-                row = scooter[t, 1]
-                bin_str_map[t][row] = bin_str_map[t][row][:col] + '1' + bin_str_map[t][row][col + 1:]
-        return bin_str_map
-
-    def _bin_str2int(self, bin_str_map):
-        N = self.N
-        int_map = [[0 for n in range(N)] for i in range(12)]
+    def _idx2map(self, idx_locations):
+        mat_map = [np.zeros(shape=(self.N, self.N), dtype=np.uint8) for t in range(12)]
         for t in range(12):
-            for row in range(self.N):
-                # convert bin string, like (0b)'1010', to integer with base 10, that is, 10
-                int_map[t][row] = int(bin_str_map[t][row], base=2)
-        return int_map
+            for scooter in idx_locations[t]:
+                col = scooter[0]
+                row = scooter[1]
+                mat_map[t][row, col] += 1
+        return mat_map
 
 
 class OLocationMap(object):
     """location map for officers"""
 
-    def __init__(self, N, location):
+    def __init__(self, N, idx_location=None, mat_map=None):
         self.N = N
-        self.P = len(location)
-        self.bin_str_map = self._idx2bin_str(location)
-        self.int_map = self._bin_str2int(self.bin_str_map)
+        if idx_location is not None and mat_map is None:
+            self.P = sum(mat_map)
+            self.mat_map = self._idx2map(idx_location)
+        elif idx_location is None and mat_map is not None:
+            self.mat_map = mat_map
 
-    def _idx2bin_str(self, location):
-        N = self.N
-        bin_str_map = ['0' * N for n in range(N)]
-        for officer in location:
-            # for each location index of officer, [col, row]
+    def _idx2map(self, idx_location):
+        """
+
+        :param idx_location: list of length self.P, each element is a 2x1 np.ndarry
+        :return:
+        """
+        mat_map = np.zeros(shape=(self.N, self.N), dtype=np.uint8)
+        for officer in idx_location:
             col = officer[0]
             row = officer[1]
-            bin_str_map[row] = bin_str_map[row][:col] + '1' + bin_str_map[row][col + 1:]
-        return bin_str_map
-
-    def _bin_str2int(self, bin_str_map):
-        int_map = [0 for n in range(self.N)]
-        for row in range(self.N):
-            int_map[row] = int(bin_str_map[row], base=2)
-        return int_map
+            mat_map[row, col] += 1
+        return mat_map
 
 
-def point_calculator(scooter_map, officer_map):
+def point_calculator(smap, omap):
     """
 
-    :param scooter_map: SLocationMap
-    :param officer_map: OLocationMap
+    :param smap: SLocationMap
+    :param omap: OLocationMap
     :return:
     """
-    points = 0
-    N = scooter_map.N
-    # TODO: is 'for' faster or 'map' faster????
-    for row in range(N):
-        for t in range(12):
-            points += bin(scooter_map.int_map[t][row] & officer_map.int_map[row]).count('1')
+    # for loop is faster than map() function
+    points = np.sum([np.sum(np.multiply(smap.mat_map[t], omap.mat_map)) for t in range(12)])
     return points
 
 
