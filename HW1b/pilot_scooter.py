@@ -8,6 +8,7 @@
 
 from __future__ import print_function
 import numpy as np
+from itertools import combinations
 
 
 class ScooterProblem(object):
@@ -22,6 +23,13 @@ class ScooterProblem(object):
 
     def _make_idx_location(self, locations):
         return [[locations[t + 12 * s] for s in range(self.S)] for t in range(12)]
+
+
+def office_solver(N, P):
+    if N > P:
+        all_row_combs = list(combinations(range(N), P))
+        for row_comb in all_row_combs:
+
 
 
 class SLocationMap(object):
