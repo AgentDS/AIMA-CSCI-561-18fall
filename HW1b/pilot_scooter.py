@@ -8,7 +8,7 @@
 
 from __future__ import print_function
 import numpy as np
-from itertools import combinations
+from itertools import combinations, permutations
 
 
 class ScooterProblem(object):
@@ -23,13 +23,6 @@ class ScooterProblem(object):
 
     def _make_idx_location(self, locations):
         return [[locations[t + 12 * s] for s in range(self.S)] for t in range(12)]
-
-
-def office_solver(N, P):
-    if N > P:
-        all_row_combs = list(combinations(range(N), P))
-        for row_comb in all_row_combs:
-
 
 
 class SLocationMap(object):
@@ -76,7 +69,7 @@ class OLocationMap(object):
         for officer in idx_location:
             col = officer[0]
             row = officer[1]
-            mat_map[row, col] += 1
+            mat_map[row, col] = 1
         return mat_map
 
 
@@ -90,6 +83,16 @@ def point_calculator(smap, omap):
     # for loop is faster than map() function
     points = np.sum([np.sum(np.multiply(smap.mat_map[t], omap.mat_map)) for t in range(12)])
     return points
+
+
+def check_conflict_set(N, P):
+    res = []
+    for row in combinations(range(N), P):
+        for col in permutations(range(N), P):
+            abs_minus = np.abs(np.array(col) - np.array(row))
+            if len(abs_minus) == len(set(abs_minus)):
+                res.append([row, col])
+    return res
 
 
 def problem_generator(in_path):
@@ -117,3 +120,18 @@ def scooter_plot(problem):
     P = problem.P
     S = problem.S
     # TODO: plot the map in matplotlib?
+
+
+def idx2map(N, row_idx, col_idx):
+    P = len(row_idx)
+    mat_map = np.zeros(shape=(N,N),dtype=np.uint8)
+
+
+
+
+def complexity_calculator(N, P):
+    N_fac = np.math.factorial(N)
+    P_fac = np.math.factorial(P)
+    N_P_fac = np.math.factorial(N - P)
+
+    return N_fac * N_fac / (P_fac * N_P_fac * N_P_fac)
