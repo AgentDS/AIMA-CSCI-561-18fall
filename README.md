@@ -11,5 +11,8 @@ Python implementation for CSCI 561 Foundations of Artificial Intelligence 2018fa
 
 ### Finished Currently
 
-- [HW1a](./HW1a): Simple Reflex Agent ([description](./HW1a/ProblemDescription)) 
+- [HW1a](./HW1a): Simple Reflex Agent ([description](./HW1a/HW1a.pdf)) 
+- [HW1b](./HW1b): Pilot Scooter Program ([description](./HW1b/HW1b.pdf)) 
+
+
 
