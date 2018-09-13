@@ -7,6 +7,7 @@
 # @Software: PyCharm
 
 from __future__ import print_function
+from copy import copy
 import numpy as np
 from itertools import combinations, permutations
 
@@ -40,9 +41,11 @@ class ScooterProblem(object):
             point = np.sum([np.sum(np.multiply(smap.mat_map[t], omap)) for t in range(12)])
         return point
 
-    def _check_conflict(self, row, col):
-        # ct = col.index(-1)    # this is for recursive edition
-        ct = len(col)
+    def _check_conflict(self, row, col, recursive=False):
+        if recursive == True and col[-1] == -1:
+            ct = col.index(-1)  # if is recursive edition and col is not full
+        else:
+            ct = len(col)
         if ct >= 2:
             for i in range(ct - 1):
                 for j in range(i + 1, ct):
@@ -68,6 +71,54 @@ class ScooterProblem(object):
         self.omap = OLocationMap(self.N, mat_map=omat_map)
         self.best_point = best_point
         return {'point': best_point, 'row_idx': best_row, 'col_idx': best_col}
+
+    def solve_smart(self):
+        best_row = None
+        best_col = None
+        best_point = 0
+        col = [-1] * self.P
+        P = self.P
+        for row in combinations(range(self.N), self.P):
+            local_best = self._recursive_permutation(P, row, col,
+                                                     local_best={'point': 0, 'row_idx': None, 'col_idx': None})
+
+            if local_best is not False:
+                if local_best['point'] > best_point:
+                    best_point = local_best['point']
+                    best_row = local_best['row_idx']
+                    best_col = local_best['col_idx']
+            else:
+                continue
+        self.omap = OLocationMap(self.N, best_row, best_col)
+        self.best_point = best_point
+        return {'point': best_point, 'row_idx': best_row, 'col_idx': best_col}
+
+    def _recursive_permutation(self, P_tmp, row, col, local_best):
+        if P_tmp == 0:
+            if self._check_conflict(row, col, recursive=True):
+                omat_map = idx2map(self.N, row, col)
+                point = self._point_calculator(omat_map)
+                if local_best['point'] < point:
+                    local_best['point'] = point
+                    local_best['row_idx'] = row
+                    local_best['col_idx'] = col
+                return local_best
+            else:
+                return False
+        else:
+            for c in list(set(range(self.P)) - set(col)):
+                col[self.P - P_tmp] = c
+                if self.P - P_tmp != 0:
+                    if self._check_conflict(row, col, recursive=True):
+                        local_best = self._recursive_permutation(P_tmp - 1, row, col, local_best)
+                        if local_best == False:
+                            continue
+                    else:
+                        continue
+                else:
+                    local_best = self._recursive_permutation(P_tmp - 1, row, col, local_best)
+                    if local_best == False:
+                        continue
 
     def output_result(self, out_path):
         with open(out_path, 'w') as out_f:

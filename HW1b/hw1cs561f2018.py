@@ -8,8 +8,20 @@
 
 import pilot_scooter as ps
 
-if __name__ == '__main__':
-    in_path = 'input.txt'
+
+def using_stupid(in_path):
     ps_problem = ps.problem_generator(in_path)
     result = ps_problem.solve_stupid()
-    ps_problem.output_result('output.txt')
+    return result
+
+
+def using_smart(in_path):
+    ps_problem = ps.problem_generator(in_path)
+    result = ps_problem.solve_smart()
+    return result
+
+
+if __name__ == '__main__':
+    in_path = 'input1.txt'
+    result = using_smart(in_path)
+    # result = using_stupid(in_path)
