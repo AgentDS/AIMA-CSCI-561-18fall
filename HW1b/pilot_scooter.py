@@ -20,9 +20,58 @@ class ScooterProblem(object):
         self.sidx_location = self._make_idx_location(scooter_locations)
         self.smap = SLocationMap(self.N, self.sidx_location)
         self.omap = None
+        self.best_point = 0
 
     def _make_idx_location(self, locations):
         return [[locations[t + 12 * s] for s in range(self.S)] for t in range(12)]
+
+    def _point_calculator(self, omap):
+        """
+
+        :param smap: SLocationMap
+        :param omap: OLocationMap
+        :return:
+        """
+        # for loop is faster than map() function
+        smap = self.smap
+        if isinstance(omap, OLocationMap):
+            point = np.sum([np.sum(np.multiply(smap.mat_map[t], omap.mat_map)) for t in range(12)])
+        elif isinstance(omap, np.ndarray):
+            point = np.sum([np.sum(np.multiply(smap.mat_map[t], omap)) for t in range(12)])
+        return point
+
+    def _check_conflict(self, row, col):
+        # ct = col.index(-1)    # this is for recursive edition
+        ct = len(col)
+        if ct >= 2:
+            for i in range(ct - 1):
+                for j in range(i + 1, ct):
+                    if abs(row[i] - row[j]) == abs(col[i] - col[j]):
+                        return False
+        return True
+
+    def solve_stupid(self):
+        best_row = None
+        best_col = None
+        best_point = 0
+        N = self.N
+        P = self.P
+        for row in combinations(range(N), P):
+            for col in permutations(range(N), P):
+                if self._check_conflict(row, col):
+                    omat_map = idx2map(N, row, col)
+                    point = self._point_calculator(omat_map)
+                    if point > best_point:
+                        best_point = point
+                        best_col = col
+                        best_row = row
+        self.omap = OLocationMap(self.N, mat_map=omat_map)
+        self.best_point = best_point
+        return {'point': best_point, 'row_idx': best_row, 'col_idx': best_col}
+
+    def output_result(self, out_path):
+        with open(out_path, 'w') as out_f:
+            print('%d' % self.best_point, end='', file=out_f)
 
 
 class SLocationMap(object):
@@ -73,28 +122,6 @@ class OLocationMap(object):
         return mat_map
 
 
-def point_calculator(smap, omap):
-    """
-
-    :param smap: SLocationMap
-    :param omap: OLocationMap
-    :return:
-    """
-    # for loop is faster than map() function
-    points = np.sum([np.sum(np.multiply(smap.mat_map[t], omap.mat_map)) for t in range(12)])
-    return points
-
-
-def check_conflict_set(N, P):
-    res = []
-    for row in combinations(range(N), P):
-        for col in permutations(range(N), P):
-            abs_minus = np.abs(np.array(col) - np.array(row))
-            if len(abs_minus) == len(set(abs_minus)):
-                res.append([row, col])
-    return res
-
-
 def problem_generator(in_path):
     line_ct = 0
     for line in open(in_path, 'r'):
@@ -105,33 +132,13 @@ def problem_generator(in_path):
             P = int(line.strip())  # number of police officers
         elif line_ct == 3:
             S = int(line.strip())  # number of scooters
-
     locations = np.loadtxt(in_path, np.int, delimiter=',', skiprows=3)
     return ScooterProblem(N, P, S, locations)
 
 
-def problem_output(m, out_path):
-    with open(out_path, 'w') as out_f:
-        print('%d' % m, end='', file=out_f)
-
-
-def scooter_plot(problem):
-    N = problem.N
-    P = problem.P
-    S = problem.S
-    # TODO: plot the map in matplotlib?
-
-
 def idx2map(N, row_idx, col_idx):
     P = len(row_idx)
-    mat_map = np.zeros(shape=(N,N),dtype=np.uint8)
-
-
-
-
-def complexity_calculator(N, P):
-    N_fac = np.math.factorial(N)
-    P_fac = np.math.factorial(P)
-    N_P_fac = np.math.factorial(N - P)
-
-    return N_fac * N_fac / (P_fac * N_P_fac * N_P_fac)
+    mat_map = np.zeros(shape=(N, N), dtype=np.uint8)
+    for i in range(P):
+        mat_map[row_idx[i], col_idx[i]] = 1
+    return mat_map

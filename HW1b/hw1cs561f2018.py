@@ -7,12 +7,15 @@
 # @Software: PyCharm
 
 import pilot_scooter as ps
+from __future__ import print_function
 import numpy as np
 import sys
 
 if __name__ == '__main__':
-    # in_path = 'input1.txt'
-    # problem = ps.problem_generator(in_path)
-    # office_map = ps.OLocationMap(problem.N, np.array([[0, 0], [2, 3], [1, 4]], dtype=np.int))
-    ps.check_conflict_set(N=int(sys.argv[1]), P=int(sys.argv[2]))
+    in_path = 'input.txt'
+    ps_problem = ps.problem_generator(in_path)
+    print("N = %d, P = %d, S = %d:" % (ps_problem.N, ps_problem.P, ps_problem.S))
+    result = ps_problem.solve_stupid()
+    ps_problem.output_result('output.txt')
+
 
