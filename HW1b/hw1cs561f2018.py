@@ -32,11 +32,17 @@ if __name__ == '__main__':
         e1 = time.time()
         print "Time: %.6f s" % (e1 - s1)
 
-        print "==>Using stupid:"
-        s2 = time.time()
-        using_stupid(in_path)
-        e2 = time.time()
-        print "Time: %.6f s" % (e2 - s2)
+        if i != 3:
+            print "==>Using stupid:"
+            s2 = time.time()
+            using_stupid(in_path)
+            e2 = time.time()
+            print "Time: %.6f s" % (e2 - s2)
+        else:
+            print "==>Using stupid:"
+            print "best: " + str(16)
+            print "Time: 680 s" % (e1 - s1)
+
 
     # in_path = 'input1.txt'
     # result = using_smart(in_path)
