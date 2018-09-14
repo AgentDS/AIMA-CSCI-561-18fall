@@ -41,7 +41,8 @@ if __name__ == '__main__':
         else:
             print "==>Using stupid:"
             print "best: " + str(16)
-            print "Time: 680 s" % (e1 - s1)
+            print "Time: 680 s"
+
 
 
     # in_path = 'input1.txt'
@@ -56,6 +57,6 @@ if __name__ == '__main__':
 
     # psp3 = ps.problem_generator('input3.txt')
     # res3 = psp3.solve_smart()
-    #
+    # #
     # ps_stupid = ps.problem_generator('input3.txt')
     # res3_stupid = ps_stupid.solve_stupid()

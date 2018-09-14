@@ -22,6 +22,7 @@ class ScooterProblem(object):
         # list of 12 elements, each element is 5 2x1 np.ndarray
         self.sidx_location = self._make_idx_location(scooter_locations)
         self.smap = SLocationMap(self.N, self.sidx_location)
+        self._smap = reduce(np.add, self.smap.mat_map)
         self.omap = None
         self.best_point = 0
         self._cexist = None
@@ -46,11 +47,10 @@ class ScooterProblem(object):
         :return:
         """
         # for loop is faster than map() function
-        smap = self.smap
         if isinstance(omap, OLocationMap):
-            point = np.sum([np.sum(np.multiply(smap.mat_map[t], omap.mat_map)) for t in range(12)])
+            point = np.sum(np.multiply(self._smap, omap.mat_map))
         elif isinstance(omap, np.ndarray):
-            point = np.sum([np.sum(np.multiply(smap.mat_map[t], omap)) for t in range(12)])
+            point = np.sum(np.multiply(self._smap, omap))
         return point
 
     def _check_conflict(self, row, col, recursive=False):
