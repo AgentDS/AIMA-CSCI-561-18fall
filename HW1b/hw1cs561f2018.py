@@ -23,25 +23,26 @@ def using_smart(in_path):
 
 
 if __name__ == '__main__':
-    # for i in range(4):
-    #     in_path = 'input' + str(i + 1) + ".txt"
-    #     print '\n' * 2 + "=" * 8 + in_path + "=" * 8
-    #     print "==>Using smart:"
-    #     s1 = time.time()
-    #     using_smart(in_path)
-    #     e1 = time.time()
-    #     print "Time: %.6f s" % (e1 - s1)
-    #
-    #     if i != 3:
-    #         print "==>Using stupid:"
-    #         s2 = time.time()
-    #         using_stupid(in_path)
-    #         e2 = time.time()
-    #         print "Time: %.6f s" % (e2 - s2)
-    #     else:
-    #         print "==>Using stupid:"
-    #         print "best: " + str(16)
-    #         print "Time: 680 s"
+    # using_smart('input3.txt')
+    for i in range(5):
+        in_path = 'input' + str(i + 1) + ".txt"
+        print '\n' * 2 + "=" * 8 + in_path + "=" * 8
+        print "==>Using smart:"
+        s1 = time.time()
+        using_smart(in_path)
+        e1 = time.time()
+        print "Time: %.6f s" % (e1 - s1)
+
+        if i != 3:
+            print "==>Using stupid:"
+            s2 = time.time()
+            using_stupid(in_path)
+            e2 = time.time()
+            print "Time: %.6f s" % (e2 - s2)
+        else:
+            print "==>Using stupid:"
+            print "best: " + str(16)
+            print "Time: 680 s"
 
 
 
@@ -57,6 +58,6 @@ if __name__ == '__main__':
 
     # psp3 = ps.problem_generator('input3.txt')
     # res3 = psp3.solve_smart()
-    # #
+    # # #
     # ps_stupid = ps.problem_generator('input3.txt')
     # res3_stupid = ps_stupid.solve_stupid()

@@ -22,7 +22,7 @@ class ScooterProblem(object):
         # list of 12 elements, each element is 5 2x1 np.ndarray
         self.sidx_location = self._make_idx_location(scooter_locations)
         self.smap = SLocationMap(self.N, self.sidx_location)
-        self._smap = reduce(np.add, self.smap.mat_map)
+        self._smap = reduce(np.add, self.smap.mat_map)  # add up all smap to speed up point calculation
         self.omap = None
         self.best_point = 0
         self._cexist = None
@@ -53,11 +53,8 @@ class ScooterProblem(object):
             point = np.sum(np.multiply(self._smap, omap))
         return point
 
-    def _check_conflict(self, row, col, recursive=False):
-        if recursive == True and col[-1] == -1:
-            ct = col.index(-1)  # if is recursive edition and col is not full
-        else:
-            ct = len(col)
+    def _check_conflict(self, row, col):
+        ct = len(col)
         if ct >= 2:
             for i in range(ct - 1):
                 for j in range(i + 1, ct):
@@ -71,6 +68,7 @@ class ScooterProblem(object):
         best_point = 0
         N = self.N
         P = self.P
+        omat_map = np.zeros(shape=(N, N))
         for row in combinations(range(N), P):
             for col in permutations(range(N), P):
                 if self._check_conflict(row, col):
@@ -92,7 +90,7 @@ class ScooterProblem(object):
             self._tmp_row = row
             self._reset_cexist()
             self._reset_tmp_col()
-            self._recursive_permutation(0)
+            self._recursive_dfs(0)
         # calculate points
         for oidx in self.oidx_loc:
             omat_map = idx2map(self.N, oidx['row_idx'], oidx['col_idx'])
@@ -104,23 +102,22 @@ class ScooterProblem(object):
         self.omap = OLocationMap(self.N, [(best_row[i], best_col[i]) for i in range(self.P)])
         return {'point': self.best_point, 'row_idx': best_row, 'col_idx': best_col}
 
-    def _recursive_permutation(self, P_tmp):
+    def _recursive_dfs(self, P_tmp):
         if P_tmp == self.P:
             # do not use self.oidx_loc.append(self._tmp_col) !!!!
             if self._check_conflict(self._tmp_row, self._tmp_col):
                 self.oidx_loc.append({'row_idx': tuple(self._tmp_row), 'col_idx': tuple(self._tmp_col)})
-                return True
-            else:
-                return CUT_OFF
-        for i in range(self.N):
-            if self._cexist[i] is False:
-                self._tmp_col[P_tmp] = i
-                if self._check_conflict(self._tmp_row, self._tmp_col, recursive=True):
-                    self._cexist[i] = True
-                    self._recursive_permutation(P_tmp + 1)
-                    self._cexist[i] = False
-                else:
-                    self._tmp_col[P_tmp] = -1
+                # return True ####????
+        else:
+            for i in range(self.N):
+                if self._cexist[i] is False:
+                    self._tmp_col[P_tmp] = i
+                    if self._check_conflict(self._tmp_row[:P_tmp + 1], self._tmp_col[:P_tmp + 1]):
+                        self._cexist[i] = True
+                        self._recursive_dfs(P_tmp + 1)
+                        self._cexist[i] = False
+                    else:
+                        self._tmp_col[P_tmp] = -1
 
     def output_result(self, out_path):
         with open(out_path, 'w') as out_f:
