@@ -15,7 +15,9 @@ Python implementation for CSCI 561 Foundations of Artificial Intelligence 2018fa
 
 - [HW1b](./HW1b): Pilot Scooter Program ([description](./HW1b/HW1b.pdf)) 
 
-  => currently, only stupid _permutation edition_ finished
+  =>  _stupid permutation_ edition finished
+
+  =>  _smart recursive_ edition finished (not smart enough)
 
 
 
