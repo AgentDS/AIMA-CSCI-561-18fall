@@ -11,6 +11,8 @@ from copy import copy
 import numpy as np
 from itertools import combinations, permutations
 
+CUT_OFF = -1
+
 
 class ScooterProblem(object):
     def __init__(self, N, P, S, scooter_locations):
@@ -22,6 +24,16 @@ class ScooterProblem(object):
         self.smap = SLocationMap(self.N, self.sidx_location)
         self.omap = None
         self.best_point = 0
+        self._cexist = None
+        self._tmp_row = None
+        self._tmp_col = None
+        self.oidx_loc = []
+
+    def _reset_cexist(self):
+        self._cexist = [False] * self.N
+
+    def _reset_tmp_col(self):
+        self._tmp_col = [-1] * self.P
 
     def _make_idx_location(self, locations):
         return [[locations[t + 12 * s] for s in range(self.S)] for t in range(12)]
@@ -76,49 +88,41 @@ class ScooterProblem(object):
         best_row = None
         best_col = None
         best_point = 0
-        col = [-1] * self.P
-        P = self.P
         for row in combinations(range(self.N), self.P):
-            local_best = self._recursive_permutation(P, row, col,
-                                                     local_best={'point': 0, 'row_idx': None, 'col_idx': None})
-
-            if local_best is not False:
-                if local_best['point'] > best_point:
-                    best_point = local_best['point']
-                    best_row = local_best['row_idx']
-                    best_col = local_best['col_idx']
-            else:
-                continue
-        self.omap = OLocationMap(self.N, best_row, best_col)
-        self.best_point = best_point
+            self._tmp_row = row
+            self._reset_cexist()
+            self._reset_tmp_col()
+            self._recursive_permutation(0)
+        # calculate points
+        for oidx in self.oidx_loc:
+            if self._check_conflict(oidx['row_idx'], oidx['col_idx']):
+                omat_map = idx2map(self.N, oidx['row_idx'], oidx['col_idx'])
+                point = self._point_calculator(omat_map)
+                if point > self.best_point:
+                    self.best_point = point
+                    best_row = oidx['row_idx']
+                    best_col = oidx['col_idx']
+        self.omap = OLocationMap(self.N, [(best_row[i], best_col[i]) for i in range(self.P)])
         return {'point': best_point, 'row_idx': best_row, 'col_idx': best_col}
 
-    def _recursive_permutation(self, P_tmp, row, col, local_best):
-        if P_tmp == 0:
-            if self._check_conflict(row, col, recursive=True):
-                omat_map = idx2map(self.N, row, col)
-                point = self._point_calculator(omat_map)
-                if local_best['point'] < point:
-                    local_best['point'] = point
-                    local_best['row_idx'] = row
-                    local_best['col_idx'] = col
-                return local_best
-            else:
-                return False
-        else:
-            for c in list(set(range(self.P)) - set(col)):
-                col[self.P - P_tmp] = c
-                if self.P - P_tmp != 0:
-                    if self._check_conflict(row, col, recursive=True):
-                        local_best = self._recursive_permutation(P_tmp - 1, row, col, local_best)
-                        if local_best == False:
-                            continue
-                    else:
-                        continue
-                else:
-                    local_best = self._recursive_permutation(P_tmp - 1, row, col, local_best)
-                    if local_best == False:
-                        continue
+    # N = n, P = m, P_tmp = cnt
+    def _recursive_permutation(self, P_tmp):
+        if P_tmp == self.P:
+            # do not use self.oidx_loc.append(self._tmp_col) !!!!
+            self.oidx_loc.append(tuple(self._tmp_col))
+            return True
+        for i in range(self.N):
+            if self._cexist[i] is False:
+                self._tmp_col[P_tmp] = i
+                self._cexist[i] = True
+                self._recursive_permutation(P_tmp + 1)
+                self._cexist[i] = False
+
+
+    def run_permutation(self):
+        self._reset_cexist()
+        self._reset_tmp_col()
+        self._recursive_permutation(0)
 
     def output_result(self, out_path):
         with open(out_path, 'w') as out_f:
@@ -154,9 +158,10 @@ class OLocationMap(object):
     def __init__(self, N, idx_location=None, mat_map=None):
         self.N = N
         if idx_location is not None and mat_map is None:
-            self.P = sum(mat_map)
+            self.P = len(idx_location)
             self.mat_map = self._idx2map(idx_location)
         elif idx_location is None and mat_map is not None:
+            self.P = sum(mat_map)
             self.mat_map = mat_map
 
     def _idx2map(self, idx_location):

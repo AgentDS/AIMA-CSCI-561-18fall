@@ -22,6 +22,9 @@ def using_smart(in_path):
 
 
 if __name__ == '__main__':
-    in_path = 'input1.txt'
-    result = using_smart(in_path)
+    ps_problem = ps.problem_generator('input1.txt')
+    ps_problem.run_permutation()
+    # in_path = 'input1.txt'
+    # result = using_smart(in_path)
     # result = using_stupid(in_path)
+
