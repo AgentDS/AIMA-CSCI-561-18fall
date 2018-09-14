@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="" />
+    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW1b/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HW1b/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW1b/pilot_scooter.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW1b/pilot_scooter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW1b/some_test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW1b/some_test.ipynb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +20,7 @@
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_pilot_scooter_test_PilotScooterTestCase_test_input2.coverage" NAME="Unittests for pilot_scooter_test.PilotScooterTestCase.test_input2 Coverage Results" MODIFIED="1536827377660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$pilot_scooter.coverage" NAME="pilot_scooter Coverage Results" MODIFIED="1536883417245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1b" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw1cs561f2018.coverage" NAME="hw1cs561f2018 Coverage Results" MODIFIED="1536911902820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1b" />
+    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$xxx.coverage" NAME="xxx Coverage Results" MODIFIED="1536917904757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1b" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$test_bench.coverage" NAME="test_bench Coverage Results" MODIFIED="1536827449701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw1acs561f18.coverage" NAME="hw1acs561f18 Coverage Results" MODIFIED="1535827569740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1a" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_simple_reflex_agent_test_MyTestCase.coverage" NAME="Unittests for simple_reflex_agent_test.MyTestCase Coverage Results" MODIFIED="1535828611911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
@@ -37,11 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pilot_scooter.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pilot_scooter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+            <state relative-caret-position="259">
+              <caret line="44" column="74" selection-start-line="44" selection-start-column="74" selection-end-line="44" selection-end-column="74" />
               <folding>
                 <element signature="e#183#220#0" expanded="true" />
               </folding>
@@ -49,20 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hw1cs561f2018.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HW1b/hw1cs561f2018.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="xxx.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HW1b/xxx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="-254">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#181#207#0" expanded="true" />
               </folding>
@@ -99,9 +96,9 @@
         <option value="$PROJECT_DIR$/HW1b/test_time.sh" />
         <option value="$PROJECT_DIR$/test/pilot_scooter_test.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/HW1b/pilot_scooter.py" />
         <option value="$PROJECT_DIR$/HW1b/xxx.py" />
         <option value="$PROJECT_DIR$/HW1b/hw1cs561f2018.py" />
+        <option value="$PROJECT_DIR$/HW1b/pilot_scooter.py" />
       </list>
     </option>
   </component>
@@ -165,7 +162,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.hw1cs561f2018">
+  <component name="RunManager" selected="Python.xxx">
     <configuration name="hw1cs561f2018" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AIMA-CSCI-561-18fall" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -223,6 +220,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="xxx" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AIMA-CSCI-561-18fall" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HW1b" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW1b/xxx.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="Unittests for pilot_scooter_test.PilotScooterTestCase.test_input2" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="AIMA-CSCI-561-18fall" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -237,34 +253,20 @@
       <option name="_new_target" value="&quot;pilot_scooter_test.PilotScooterTestCase.test_input2&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests in pilot_scooter_test.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="AIMA-CSCI-561-18fall" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/pilot_scooter_test.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-    </configuration>
     <list>
       <item itemvalue="Python.test_bench" />
       <item itemvalue="Python.hw1cs561f2018" />
-      <item itemvalue="Python tests.Unittests in pilot_scooter_test.py" />
       <item itemvalue="Python tests.Unittests for pilot_scooter_test.PilotScooterTestCase.test_input2" />
       <item itemvalue="Python.pilot_scooter" />
+      <item itemvalue="Python.xxx" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.xxx" />
         <item itemvalue="Python.hw1cs561f2018" />
         <item itemvalue="Python.pilot_scooter" />
         <item itemvalue="Python.test_bench" />
         <item itemvalue="Python tests.Unittests for pilot_scooter_test.PilotScooterTestCase.test_input2" />
-        <item itemvalue="Python tests.Unittests in pilot_scooter_test.py" />
       </list>
     </recent_temporary>
   </component>
@@ -324,15 +326,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32965517" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32965517" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.32551724" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.6137931" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.5324138" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30452344" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28413793" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.20827587" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.30452344" />
       <window_info anchor="right" id="R Packages" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" />
@@ -705,28 +708,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW1b/xxx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        <state relative-caret-position="-254">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#181#207#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
+    <entry file="file://$PROJECT_DIR$/HW1b/hw1cs561f2018.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="15" column="35" lean-forward="true" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW1b/hw1cs561f2018.py">
+    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        <state relative-caret-position="259">
+          <caret line="44" column="74" selection-start-line="44" selection-start-column="74" selection-end-line="44" selection-end-column="74" />
+          <folding>
+            <element signature="e#183#220#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

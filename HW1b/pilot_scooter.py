@@ -39,6 +39,12 @@ class ScooterProblem(object):
     def _make_idx_location(self, locations):
         return [[locations[t + 12 * s] for s in range(self.S)] for t in range(12)]
 
+    def _max_point_estimate(self, P_tmp):
+        omat_map = idx2map(self.N, self._tmp_row[:P_tmp + 1], self._tmp_col[:P_tmp + 1])
+        cur_point = self._point_calculator(omat_map)
+        future_max = np.max(self._smap[self._tmp_row[P_tmp + 1:]], axis=1)
+        return cur_point + future_max
+
     def _point_calculator(self, omap):
         """
 
