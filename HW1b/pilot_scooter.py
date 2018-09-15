@@ -42,7 +42,7 @@ class ScooterProblem(object):
     def _max_point_estimate(self, P_tmp):
         omat_map = idx2map(self.N, self._tmp_row[:P_tmp + 1], self._tmp_col[:P_tmp + 1])
         cur_point = self._point_calculator(omat_map)
-        future_max = np.max(self._smap[self._tmp_row[P_tmp + 1:]], axis=1)
+        future_max = np.sum(np.max(self._smap[self._tmp_row[P_tmp + 1:], :], axis=1))
         return cur_point + future_max
 
     def _point_calculator(self, omap):
@@ -98,30 +98,29 @@ class ScooterProblem(object):
             self._reset_tmp_col()
             self._recursive_dfs(0)
         # calculate points
-        for oidx in self.oidx_loc:
-            omat_map = idx2map(self.N, oidx['row_idx'], oidx['col_idx'])
-            point = self._point_calculator(omat_map)
-            if point > self.best_point:
-                self.best_point = point
-                best_row = oidx['row_idx']
-                best_col = oidx['col_idx']
-        self.omap = OLocationMap(self.N, [(best_row[i], best_col[i]) for i in range(self.P)])
-        return {'point': self.best_point, 'row_idx': best_row, 'col_idx': best_col}
+        self.omap = OLocationMap(self.N,
+                                 [(self.oidx_loc['row_idx'][i], self.oidx_loc['col_idx'][i]) for i in range(self.P)])
+        return self.best_point
 
     def _recursive_dfs(self, P_tmp):
         if P_tmp == self.P:
             # do not use self.oidx_loc.append(self._tmp_col) !!!!
             if self._check_conflict(self._tmp_row, self._tmp_col):
-                self.oidx_loc.append({'row_idx': tuple(self._tmp_row), 'col_idx': tuple(self._tmp_col)})
-                # return True ####????
+                omat_map = idx2map(self.N, self._tmp_row, self._tmp_col)
+                point = self._point_calculator(omat_map)
+                if point > self.best_point:
+                    self.best_point = point
+                    self.oidx_loc = {'row_idx': tuple(self._tmp_row), 'col_idx': tuple(self._tmp_col)}
+                    # self.oidx_loc.append({'row_idx': tuple(self._tmp_row), 'col_idx': tuple(self._tmp_col)})
         else:
             for i in range(self.N):
                 if self._cexist[i] is False:
                     self._tmp_col[P_tmp] = i
                     if self._check_conflict(self._tmp_row[:P_tmp + 1], self._tmp_col[:P_tmp + 1]):
-                        self._cexist[i] = True
-                        self._recursive_dfs(P_tmp + 1)
-                        self._cexist[i] = False
+                        if self._max_point_estimate(P_tmp) >= self.best_point:
+                            self._cexist[i] = True
+                            self._recursive_dfs(P_tmp + 1)
+                            self._cexist[i] = False
                     else:
                         self._tmp_col[P_tmp] = -1
 
