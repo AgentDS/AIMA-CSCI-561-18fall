@@ -17,7 +17,7 @@ Python implementation for CSCI 561 Foundations of Artificial Intelligence 2018fa
 
   =>  _stupid permutation_ edition finished
 
-  =>  _smart recursive_ edition finished (not smart enough)
+  =>  _smart recursive_ edition finished
 
 
 
