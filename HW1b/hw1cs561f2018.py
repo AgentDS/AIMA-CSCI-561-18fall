@@ -9,7 +9,7 @@
 import pilot_scooter as ps
 
 if __name__ == '__main__':
-    in_path = 'input7.txt'
+    in_path = 'input.txt'
     out_path = 'output.txt'
     problem = ps.problem_generator(in_path)
     problem.solve_smart()
