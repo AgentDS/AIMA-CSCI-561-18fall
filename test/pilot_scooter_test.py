@@ -73,6 +73,24 @@ class PilotScooterTestCase(unittest.TestCase):
             answer = int(f.readline().strip())
         self.assertEqual(result, answer)
 
+    def test_input8(self):
+        """Test on case input8.txt"""
+        in_path = './HW1b/input8.txt'
+        ps_problem = ps.problem_generator(in_path)
+        result = ps_problem.solve_smart()
+        with open('./HW1b/solution8.txt', 'r') as f:
+            answer = int(f.readline().strip())
+        self.assertEqual(result, answer)
+
+    def test_input13(self):
+        """Test on case input13.txt"""
+        in_path = './HW1b/input13.txt'
+        ps_problem = ps.problem_generator(in_path)
+        result = ps_problem.solve_smart()
+        with open('./HW1b/solution13.txt', 'r') as f:
+            answer = int(f.readline().strip())
+        self.assertEqual(result, answer)
+
 
 if __name__ == "__main__":
     unittest.main()

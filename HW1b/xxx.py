@@ -10,12 +10,12 @@ import pilot_scooter as ps
 from time import time
 
 if __name__ == '__main__':
-    in_path = 'input.txt'
+    in_path = 'input15.txt'
     out_path = 'output.txt'
     problem = ps.problem_generator(in_path)
     print("Read In End ...")
     s = time()
     problem.solve_smart()
     e = time()
-    print("time: %.5s, best point = %d" % (e - s, problem.best_point))
+    print("time: %.5f s, best point = %d" % (e - s, problem.best_point))
     problem.output_result(out_path)
