@@ -21,14 +21,17 @@ class ScooterProblem(object):
         self.S = S  # number of scooters
         # list of 12 elements, each element is 5 2x1 np.ndarray
         self.sidx_location = self._make_idx_location(scooter_locations)
-        self.smap = SLocationMap(self.N, self.sidx_location)
-        self._smap = reduce(np.add, self.smap.mat_map)  # add up all smap to speed up point calculation
+        self._smap = self._make_smap()  # add up all smap to speed up point calculation
         self.omap = None
         self.best_point = 0
         self._cexist = None
         self._tmp_row = None
         self._tmp_col = None
         self.oidx_loc = []
+
+    def _make_smap(self):
+        smap = SLocationMap(self.N, self.sidx_location)
+        return reduce(np.add, smap.mat_map)
 
     def _reset_cexist(self):
         self._cexist = [False] * self.N
@@ -90,8 +93,6 @@ class ScooterProblem(object):
         return {'point': best_point, 'row_idx': best_row, 'col_idx': best_col}
 
     def solve_smart(self):
-        best_row = None
-        best_col = None
         for row in combinations(range(self.N), self.P):
             self._tmp_row = row
             self._reset_cexist()
@@ -111,7 +112,6 @@ class ScooterProblem(object):
                 if point > self.best_point:
                     self.best_point = point
                     self.oidx_loc = {'row_idx': tuple(self._tmp_row), 'col_idx': tuple(self._tmp_col)}
-                    # self.oidx_loc.append({'row_idx': tuple(self._tmp_row), 'col_idx': tuple(self._tmp_col)})
         else:
             for i in range(self.N):
                 if self._cexist[i] is False:
@@ -126,7 +126,7 @@ class ScooterProblem(object):
 
     def output_result(self, out_path):
         with open(out_path, 'w') as out_f:
-            print('%d' % self.best_point, end='', file=out_f)
+            print('%d' % self.best_point, file=out_f)
 
 
 class SLocationMap(object):
