@@ -5,3 +5,9 @@
 # @Contact : zszxlsq@gmail.com
 # @File    : hw2cs561f2018.py
 # @Software: PyCharm
+
+import homeless_service as hs
+
+prob = hs.problem_generator('input.txt')
+for app in prob.app_info:
+    print(app)

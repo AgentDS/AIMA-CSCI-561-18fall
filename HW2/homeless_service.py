@@ -23,21 +23,26 @@ class HomelessService(object):
 
 class ApplicantInfo(object):
     def __init__(self, info_str):
-        self.app_id = int(info_str[:5], 2)
+        self.app_id = int(info_str[:5])
         self.gender = info_str[5]  # 'M'/'F'/'O'
         self.age = int(info_str[6:9])
         self.pets = 1 if info_str[9] == 'Y' else 0
         self.med = 1 if info_str[10] == 'Y' else 0
         self.car = 1 if info_str[11] == 'Y' else 0
         self.driver_license = 1 if info_str[12] == 'Y' else 0
-        self.days = self._day_trans(info_str[13:])
+        days = info_str[13:]
+        self.days = np.array([int(info_str[13 + i]) for i in range(7)], dtype=np.int8)
 
-    def _day_trans(self, day_str):
-        days = np.zeros(shape=(7,), dtype=np.int8)
-        for i in range(7):
-            if day_str[i] == '1':
-                days[i] = 1
-        return days
+    def __repr__(self):
+        app_id = "%05d" % self.app_id
+        gender = self.gender
+        age = "%03d" % self.age
+        pets = 'Y' if self.pets == 1 else 'N'
+        med = 'Y' if self.med == 1 else 'N'
+        car = 'Y' if self.car == 1 else 'N'
+        driver = 'Y' if self.driver_license == 1 else 'N'
+        days = ''.join([str(i) for i in self.days])
+        return app_id + gender + age + pets + med + car + driver + days
 
 
 def problem_generator(in_path):
@@ -55,12 +60,13 @@ def problem_generator(in_path):
             elif line_ct == 3:
                 L = int(line.strip())  # number of applicants chosen by LAHSA so far
             elif line_ct <= 3 + L:
-                LASHA_id_list.append(line.strip())
+                LASHA_id_list.append(int(line.strip()))
             elif line_ct == 4 + L:
                 S = int(line.strip())  # number of applicants chosen by SPLA so far
             elif line_ct <= 4 + L + S:
-                SPLA_id_list.append(line.strip())
+                SPLA_id_list.append(int(line.strip()))
             elif line_ct == 5 + L + S:
                 A = int(line.strip())  # total number of applicants
             elif line_ct <= 5 + L + S + A:
                 app_info.append(ApplicantInfo(line.strip()))
+    return HomelessService(b, p, L, LASHA_id_list, S, SPLA_id_list, A, app_info)
