@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/HW2/homeless_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/homeless_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW2/hw2cs561f2018.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/hw2cs561f2018.py" afterDir="false" />
-    </list>
+    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +38,15 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="pv.dat" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Desktop/CSCI 596/Assignment/assignment03/pv.dat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3945" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -100,6 +105,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -107,16 +113,10 @@
               <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
               <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -311,6 +311,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="407" y="22" width="873" height="778" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32965517" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -319,9 +320,8 @@
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.36270192" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.44052863" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.16551724" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2045728" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20938627" />
       <window_info anchor="right" id="R Packages" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="Database" order="5" weight="0.32961932" />
       <window_info anchor="right" auto_hide="true" id="SciView" order="3" show_stripe_button="false" type="FLOATING" weight="0.32956383" />
@@ -329,6 +329,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.53891337" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -404,16 +405,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2480">
-          <caret line="126" column="49" selection-start-line="126" selection-start-column="49" selection-end-line="126" selection-end-column="49" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW1b/hw1cs561f2018.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -425,9 +416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2120">
           <caret line="106" column="7" lean-forward="true" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -442,9 +430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -459,9 +444,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1160">
           <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -655,9 +637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding>
-            <element signature="e#181#207#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -689,9 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
           <caret line="192" lean-forward="true" selection-start-line="180" selection-end-line="192" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,6 +690,11 @@
         <state relative-caret-position="196">
           <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/CSCI 596/Assignment/assignment03/pv.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3945" />
       </provider>
     </entry>
   </component>
