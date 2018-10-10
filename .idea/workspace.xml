@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="" />
+    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW2/homeless_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/homeless_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW2/hw2cs561f2018.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/hw2cs561f2018.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW2/input.txt" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +23,7 @@
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$xxx.coverage" NAME="xxx Coverage Results" MODIFIED="1537084500020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1b" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$test_bench.coverage" NAME="test_bench Coverage Results" MODIFIED="1537122873406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw1acs561f18.coverage" NAME="hw1acs561f18 Coverage Results" MODIFIED="1535827569740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1a" />
-    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw2cs561f2018.coverage" NAME="hw2cs561f2018 Coverage Results" MODIFIED="1538270331395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
+    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw2cs561f2018.coverage" NAME="hw2cs561f2018 Coverage Results" MODIFIED="1539130163844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_simple_reflex_agent_test_MyTestCase.coverage" NAME="Unittests for simple_reflex_agent_test.MyTestCase Coverage Results" MODIFIED="1535828611911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_pilot_scooter_test_PilotScooterTestCase_test_input1.coverage" NAME="Unittests for pilot_scooter_test.PilotScooterTestCase.test_input1 Coverage Results" MODIFIED="1536826013868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_in_first_test_py.coverage" NAME="Unittests in first_test.py Coverage Results" MODIFIED="1535780066106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
@@ -38,11 +43,22 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pv.dat" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Desktop/CSCI 596/Assignment/assignment03/pv.dat">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="hw2cs561f2018.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HW2/hw2cs561f2018.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3945" />
+            <state relative-caret-position="240">
+              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homeless_service.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HW2/homeless_service.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1113">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -54,6 +70,11 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>add</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,7 +115,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="407" />
     <option name="y" value="22" />
     <option name="width" value="873" />
@@ -112,6 +133,16 @@
             <path>
               <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
               <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
+              <item name="HW1b" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
+              <item name="HW2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -310,33 +341,32 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="407" y="22" width="873" height="778" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32965517" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.10482758" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32965517" />
       <window_info anchor="bottom" id="Python Console" order="11" weight="0.36270192" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.44052863" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.16551724" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20938627" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14378029" />
       <window_info anchor="right" id="R Packages" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="Database" order="5" weight="0.32961932" />
-      <window_info anchor="right" auto_hide="true" id="SciView" order="3" show_stripe_button="false" type="FLOATING" weight="0.32956383" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32892805" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32956383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.53891337" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" x="0" y="0" width="270" height="600" id="Documentation" order="7" side_tool="true" weight="0.0638126" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,34 +435,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HW1b/hw1cs561f2018.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2120">
-          <caret line="106" column="7" lean-forward="true" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HW1b/hw1cs561f2018.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW1b/hw1cs561f2018.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -664,17 +666,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="192" lean-forward="true" selection-start-line="180" selection-end-line="192" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW2/input.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/CSCI 596/Assignment/assignment03/pv.dat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/input1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/output0.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/input0.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/input2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -687,14 +704,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW2/homeless_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+        <state relative-caret-position="1113">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/CSCI 596/Assignment/assignment03/pv.dat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3945" />
       </provider>
     </entry>
   </component>

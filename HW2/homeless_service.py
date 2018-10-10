@@ -20,6 +20,28 @@ class HomelessService(object):
         self.A = A
         self.app_info = app_info
 
+    def _SPLA_requirement(self):
+        candidates = []
+        for app in self.app_info:
+            if app.car * app.driver_license * (1 - app.med) == 1:
+                candidates.append(app)
+        self._SPLA_candidates = candidates
+
+    def _LAHSA_requirement(self):
+        candidates = []
+        for app in self.app_info:
+            if app.gender == 'F' and app.age > 17 and app.pets == 0:
+                candidates.append(app)
+        self._LAHSA_candidates = candidates
+
+    def _check_bed(self, LAHSA_tmp_choose):
+        days = [app.days for app in LAHSA_tmp_choose]
+        return np.all(reduce(np.add, days) <= self.b)
+
+    def _check_parking(self, SPLA_tmp_choose):
+        days = [app.days for app in SPLA_tmp_choose]
+        return np.all(reduce(np.add, days) <= self.p)
+
 
 class ApplicantInfo(object):
     def __init__(self, info_str):
@@ -30,8 +52,8 @@ class ApplicantInfo(object):
         self.med = 1 if info_str[10] == 'Y' else 0
         self.car = 1 if info_str[11] == 'Y' else 0
         self.driver_license = 1 if info_str[12] == 'Y' else 0
-        days = info_str[13:]
-        self.days = np.array([int(info_str[13 + i]) for i in range(7)], dtype=np.int8)
+        # days = info_str[13:]
+        self.days = np.array([int(info_str[13 + i]) for i in range(7)], dtype=np.int8).reshape(1, 7)
 
     def __repr__(self):
         app_id = "%05d" % self.app_id

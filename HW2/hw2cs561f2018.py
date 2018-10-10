@@ -8,6 +8,6 @@
 
 import homeless_service as hs
 
-prob = hs.problem_generator('input.txt')
+prob = hs.problem_generator('input2.txt')
 for app in prob.app_info:
     print(app)
