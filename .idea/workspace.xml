@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/test/homeless_service_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW2/experiment.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/experiment.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW2/homeless_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/homeless_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW2/hw2cs561f2018.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/hw2cs561f2018.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/pilot_scooter_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/pilot_scooter_test.py" afterDir="false" />
-    </list>
+    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,14 +40,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="hw2cs561f2018.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HW2/hw2cs561f2018.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-              <folding>
-                <element signature="e#181#218#0" expanded="true" />
-              </folding>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="380">
+                <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -133,16 +126,6 @@
             <path>
               <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
               <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -337,7 +320,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" order="3" weight="0.29483038" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -346,7 +328,7 @@
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.36270192" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.49655172" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.16551724" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22051696" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22051696" />
       <window_info anchor="right" id="R Packages" order="6" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" />
@@ -577,16 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="280">
-            <caret line="14" column="73" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW1b/input1.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -701,6 +673,16 @@
           <folding>
             <element signature="e#181#218#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="380">
+            <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
