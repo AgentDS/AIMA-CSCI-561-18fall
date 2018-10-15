@@ -196,18 +196,19 @@ class HomelessService(object):
         elif self._LAHSA_flag is False:
             for j in range(self._LAHSA_candidates_cnt):
                 if self._LAHSA_tmp[j] is False:
-                    self._LAHSA_tmp[j] = True
                     id = self._LAHSA_candidates[j]
-                    if id in self._SPLA_candidates:
-                        idx_SPLA = self._SPLA_candidates.index(id)
-                        self._SPLA_tmp[idx_SPLA] = True
-                    self._LAHSA_current_list.append(id)
-                    self._SPLA_choose_modify()
-                    self._LAHSA_current_list.pop()
-                    self._LAHSA_tmp[j] = False
-                    if id in self._SPLA_candidates:
-                        self._SPLA_tmp[idx_SPLA] = False
-                    self._reset_flag()
+                    if self._check_bed(self._LAHSA_current_list + [id] + self.LAHSA_id):
+                        self._LAHSA_tmp[j] = True
+                        if id in self._SPLA_candidates:
+                            idx_SPLA = self._SPLA_candidates.index(id)
+                            self._SPLA_tmp[idx_SPLA] = True
+                        self._LAHSA_current_list.append(id)
+                        self._SPLA_choose_modify()
+                        self._LAHSA_current_list.pop()
+                        self._LAHSA_tmp[j] = False
+                        if id in self._SPLA_candidates:
+                            self._SPLA_tmp[idx_SPLA] = False
+                        self._reset_flag()
         elif self._LAHSA_flag is True:
             self._SPLA_choose_modify()
 
