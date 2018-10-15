@@ -20,6 +20,7 @@ class HomelessService(object):
         self.A = A
         self.app_info = app_info
         self.resolution = []
+        self.resolution_modify = []
 
         # to indicate whether application have been choose, True means having been used
         self._SPLA_tmp = None
@@ -127,8 +128,8 @@ class HomelessService(object):
             self._LAHSA_flag = False
 
         if self._SPLA_flag is True and self._LAHSA_flag is True:
-            self.resolution.append({'SPLA': self._SPLA_current_list,
-                                    'LAHSA': self._LAHSA_current_list})
+            self.resolution.append({'SPLA': self._SPLA_current_list + self.SPLA_id,
+                                    'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
         elif self._LAHSA_flag is False and self._SPLA_flag is False:
             for j in range(self._LAHSA_candidates_cnt):
                 if self._LAHSA_tmp[j] is False:
@@ -153,6 +154,78 @@ class HomelessService(object):
                              self._LAHSA_tmp[ii] is False]
             self.resolution.append({'SPLA': self._SPLA_current_list + self.SPLA_id,
                                     'LAHSA': self._LAHSA_current_list + rest_LAHSA_id + self.LAHSA_id})
+
+    """
+    Modification
+    """
+
+    # TODO: Modification for maximization
+
+    def solve_modify(self):
+        self._reset_SPLA_tmp()
+        self._reset_LAHSA_tmp()
+        self._SPLA_choose_modify()
+
+    def _reset_flag(self):
+        if np.all(self._SPLA_tmp):
+            self._SPLA_flag = True
+        else:
+            self._SPLA_flag = False
+        if np.all(self._LAHSA_tmp):
+            self._LAHSA_flag = True
+        else:
+            self._LAHSA_flag = False
+
+    def _SPLA_choose_modify(self):
+        self._reset_flag()
+
+        if self._SPLA_flag is True and self._LAHSA_flag is True:
+            self.resolution_modify.append(
+                {'SPLA': self._SPLA_current_list + self.SPLA_id,
+                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+        elif self._SPLA_flag is False:
+            for i in range(self._SPLA_candidates_cnt):
+                if self._SPLA_tmp[i] is False:
+                    self._SPLA_tmp[i] = True
+                    id = self._SPLA_candidates[i]
+                    if id in self._LAHSA_candidates:
+                        idx_LAHSA = self._LAHSA_candidates.index(id)
+                        self._LAHSA_tmp[idx_LAHSA] = True
+                    self._SPLA_current_list.append(id)
+                    self._LAHSA_choose_modify()
+                    self._SPLA_current_list.pop()
+                    self._SPLA_tmp[i] = False
+                    if id in self._LAHSA_candidates:
+                        self._LAHSA_tmp[idx_LAHSA] = False
+                    self._reset_flag()
+
+        elif self._SPLA_flag is True:
+            self._LAHSA_choose_modify()
+
+    def _LAHSA_choose_modify(self):
+        self._reset_flag()
+
+        if self._SPLA_flag is True and self._LAHSA_flag is True:
+            self.resolution_modify.append(
+                {'SPLA': self._SPLA_current_list + self.SPLA_id,
+                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+        elif self._LAHSA_flag is False:
+            for j in range(self._LAHSA_candidates_cnt):
+                if self._LAHSA_tmp[j] is False:
+                    self._LAHSA_tmp[j] = True
+                    id = self._LAHSA_candidates[j]
+                    if id in self._SPLA_candidates:
+                        idx_SPLA = self._SPLA_candidates.index(id)
+                        self._SPLA_tmp[idx_SPLA] = True
+                    self._LAHSA_current_list.append(id)
+                    self._SPLA_choose_modify()
+                    self._LAHSA_current_list.pop()
+                    self._LAHSA_tmp[j] = False
+                    if id in self._SPLA_candidates:
+                        self._SPLA_tmp[idx_SPLA] = False
+                    self._reset_flag()
+        elif self._LAHSA_flag is True:
+            self._SPLA_choose_modify()
 
 
 class ApplicantInfo(object):
