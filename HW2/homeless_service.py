@@ -5,9 +5,8 @@
 # @Contact : zszxlsq@gmail.com
 # @File    : homeless_service.py
 # @Software: PyCharm
-
+from __future__ import print_function
 import numpy as np
-import copy
 
 
 class HomelessService(object):
@@ -20,8 +19,7 @@ class HomelessService(object):
         self.SPLA_id = SPLA_id
         self.A = A
         self.app_info = app_info
-        self.resolution = []
-        self.resolution_modify = []
+        self.SPLA_best_first_id = None
 
         # to indicate whether application have been choose, True means having been used
         self._SPLA_tmp = None
@@ -70,6 +68,16 @@ class HomelessService(object):
     def _get_app_info(self, id_list):
         return [self.app_info[i] for i in id_list]
 
+    def solve(self):
+        self._reset_SPLA_tmp()
+        self._reset_LAHSA_tmp()
+        best_plan = self._SPLA_choose()
+        self.SPLA_best_first_id = best_plan['SPLA'][0]
+
+    def output_result(self, out_path):
+        with open(out_path, 'w') as out_f:
+            print("%05d" % self.SPLA_best_first_id, file=out_f, end='')
+
     def _check_bed(self, LAHSA_tmp_id):
         LAHSA_tmp_app_info = self._get_app_info(LAHSA_tmp_id)
         days = [app.days for app in LAHSA_tmp_app_info]
@@ -82,11 +90,6 @@ class HomelessService(object):
         # True means still have space
         return np.all(reduce(np.add, days) <= self.p)
 
-    def solve(self):
-        self._reset_SPLA_tmp()
-        self._reset_LAHSA_tmp()
-        self._SPLA_choose()
-
     def _reset_flag(self):
         if np.all(self._SPLA_tmp):
             self._SPLA_flag = True
@@ -97,6 +100,27 @@ class HomelessService(object):
         else:
             self._LAHSA_flag = False
 
+    def _calculate_efficiency(self, app_id_list, limit):
+        app_list = self._get_app_info(app_id_list)
+        days = [app.days[0] for app in app_list]
+        return np.sum(reduce(np.add, days)) / np.float(limit * 7)
+
+    def _choose_max(self, current_level_plans, eff_type):
+        """
+        Choose max node.
+
+        eff_type: 'SPLA_eff' or 'LAHSA_eff'
+        """
+        best_eff = 0
+        best_plan = None
+        plan_cnt = len(current_level_plans)
+        for i in range(plan_cnt):
+            if current_level_plans[i] is not None:
+                if current_level_plans[i][eff_type] > best_eff:
+                    best_eff = current_level_plans[i][eff_type]
+                    best_plan = current_level_plans[i]
+        return best_plan
+
     def _SPLA_choose(self):
         self._reset_flag()
         if self._SPLA_flag is True and self._LAHSA_flag is True:
@@ -104,12 +128,10 @@ class HomelessService(object):
                                                    self.b)
             SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
                                                   self.p)
-            self.resolution.append(
-                {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
-                 'SPLA_eff': SPLA_eff,
-                 'LAHSA_eff': LAHSA_eff})
+            return {'SPLA': self._SPLA_current_list + self.SPLA_id, 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
+                    'SPLA_eff': SPLA_eff, 'LAHSA_eff': LAHSA_eff}
         elif self._SPLA_flag is False:
+            current_level = []
             for i in range(self._SPLA_candidates_cnt):
                 if self._SPLA_tmp[i] is False:
                     id = self._SPLA_candidates[i]
@@ -119,14 +141,16 @@ class HomelessService(object):
                         if id in self._LAHSA_candidates:
                             idx_LAHSA = self._LAHSA_candidates.index(id)
                             self._LAHSA_tmp[idx_LAHSA] = True
-                        self._LAHSA_choose()
+                        current_level.append(self._LAHSA_choose())
                         self._SPLA_current_list.pop()
                         self._SPLA_tmp[i] = False
                         if id in self._LAHSA_candidates:
                             self._LAHSA_tmp[idx_LAHSA] = False
                         self._reset_flag()
+            # SPLA chooses plan with maximum parking using efficiency
+            return self._choose_max(current_level, 'SPLA_eff')
         elif self._SPLA_flag is True:
-            self._LAHSA_choose()
+            return self._LAHSA_choose()
 
     def _LAHSA_choose(self):
         self._reset_flag()
@@ -135,105 +159,8 @@ class HomelessService(object):
                                                    self.b)
             SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
                                                   self.p)
-            self.resolution.append(
-                {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
-                 'SPLA_eff': SPLA_eff,
-                 'LAHSA_eff': LAHSA_eff})
-
-        elif self._LAHSA_flag is False:
-            for j in range(self._LAHSA_candidates_cnt):
-                if self._LAHSA_tmp[j] is False:
-                    id = self._LAHSA_candidates[j]
-                    if self._check_bed(self._LAHSA_current_list + [id] + self.LAHSA_id):
-                        self._LAHSA_tmp[j] = True
-                        self._LAHSA_current_list.append(id)
-                        if id in self._SPLA_candidates:
-                            idx_SPLA = self._SPLA_candidates.index(id)
-                            self._SPLA_tmp[idx_SPLA] = True
-                        self._SPLA_choose()
-                        self._LAHSA_current_list.pop()
-                        self._LAHSA_tmp[j] = False
-                        if id in self._SPLA_candidates:
-                            self._SPLA_tmp[idx_SPLA] = False
-                        self._reset_flag()
-        elif self._LAHSA_flag is True:
-            self._SPLA_choose()
-
-    """
-    Modification
-    """
-
-    # TODO: Modification for maximization
-
-    def solve_modify(self):
-        self._reset_SPLA_tmp()
-        self._reset_LAHSA_tmp()
-        print(self._SPLA_choose_modify())
-
-    def _calculate_efficiency(self, app_id_list, limit):
-        app_list = self._get_app_info(app_id_list)
-        days = [app.days[0] for app in app_list]
-        return np.sum(reduce(np.add, days)) / np.float(limit * 7)
-
-    def _SPLA_choose_modify(self):
-        self._reset_flag()
-        if self._SPLA_flag is True and self._LAHSA_flag is True:
-            LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
-                                                   self.b)
-            SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
-                                                  self.p)
-            self.resolution_modify.append(
-                {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
-                 'SPLA_eff': SPLA_eff,
-                 'LAHSA_eff': LAHSA_eff})
             return {'SPLA': self._SPLA_current_list + self.SPLA_id, 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
                     'SPLA_eff': SPLA_eff, 'LAHSA_eff': LAHSA_eff}
-        elif self._SPLA_flag is False:
-            current_level = []
-            for i in range(self._SPLA_candidates_cnt):
-                if self._SPLA_tmp[i] is False:
-                    id = self._SPLA_candidates[i]
-                    if self._check_parking(self._SPLA_current_list + [id] + self.SPLA_id):
-                        self._SPLA_tmp[i] = True
-                        self._SPLA_current_list.append(id)
-                        if id in self._LAHSA_candidates:
-                            idx_LAHSA = self._LAHSA_candidates.index(id)
-                            self._LAHSA_tmp[idx_LAHSA] = True
-                        current_level.append(self._LAHSA_choose_modify())
-                        self._SPLA_current_list.pop()
-                        self._SPLA_tmp[i] = False
-                        if id in self._LAHSA_candidates:
-                            self._LAHSA_tmp[idx_LAHSA] = False
-                        self._reset_flag()
-            best_SPLA_eff = 0
-            best_plan = None
-            plan_cnt = len(current_level)
-            for i in range(plan_cnt):
-                if current_level[i] is not None:
-                    if current_level[i]['SPLA_eff'] > best_SPLA_eff:
-                        best_SPLA_eff = current_level[i]['SPLA_eff']
-                        best_plan = current_level[i]
-            return best_plan
-        elif self._SPLA_flag is True:
-            return self._LAHSA_choose_modify()
-
-    def _LAHSA_choose_modify(self):
-        self._reset_flag()
-        if self._SPLA_flag is True and self._LAHSA_flag is True:
-            LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
-                                                   self.b)
-            SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
-                                                  self.p)
-            self.resolution_modify.append(
-                {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
-                 'SPLA_eff': SPLA_eff,
-                 'LAHSA_eff': LAHSA_eff})
-            return {'SPLA': self._SPLA_current_list + self.SPLA_id, 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
-                    'SPLA_eff': SPLA_eff, 'LAHSA_eff': LAHSA_eff}
-
 
         elif self._LAHSA_flag is False:
             current_level = []
@@ -246,24 +173,17 @@ class HomelessService(object):
                         if id in self._SPLA_candidates:
                             idx_SPLA = self._SPLA_candidates.index(id)
                             self._SPLA_tmp[idx_SPLA] = True
-                            current_level.append(self._SPLA_choose_modify())
+                            current_level.append(self._SPLA_choose())
                         self._LAHSA_current_list.pop()
                         self._LAHSA_tmp[j] = False
                         if id in self._SPLA_candidates:
                             self._SPLA_tmp[idx_SPLA] = False
                         self._reset_flag()
-            best_LAHSA_eff = 0
-            best_plan = None
-            plan_cnt = len(current_level)
-            for i in range(plan_cnt):
-                if current_level[i] is not None:
-                    if current_level[i]['LAHSA_eff'] > best_LAHSA_eff:
-                        best_LAHSA_eff = current_level[i]['LAHSA_eff']
-                        best_plan = current_level[i]
-            return best_plan
+            # LAHSA chooses plan with maximum bed using efficiency
+            return self._choose_max(current_level, 'LAHSA_eff')
 
         elif self._LAHSA_flag is True:
-            return self._SPLA_choose_modify()
+            return self._SPLA_choose()
 
 
 class ApplicantInfo(object):
