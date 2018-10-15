@@ -98,7 +98,6 @@ class HomelessService(object):
 
     def _SPLA_choose(self):
         self._reset_flag()
-
         if self._SPLA_flag is True and self._LAHSA_flag is True:
             LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
                                                    self.b)
@@ -112,25 +111,25 @@ class HomelessService(object):
         elif self._SPLA_flag is False:
             for i in range(self._SPLA_candidates_cnt):
                 if self._SPLA_tmp[i] is False:
-                    self._SPLA_tmp[i] = True
                     id = self._SPLA_candidates[i]
-                    if id in self._LAHSA_candidates:
-                        idx_LAHSA = self._LAHSA_candidates.index(id)
-                        self._LAHSA_tmp[idx_LAHSA] = True
-                    self._SPLA_current_list.append(id)
-                    self._LAHSA_choose()
-                    self._SPLA_current_list.pop()
-                    self._SPLA_tmp[i] = False
-                    if id in self._LAHSA_candidates:
-                        self._LAHSA_tmp[idx_LAHSA] = False
-                    self._reset_flag()
+                    if self._check_parking(self._SPLA_current_list + [id] + self.SPLA_id):
+                        self._SPLA_tmp[i] = True
+                        self._SPLA_current_list.append(id)
+                        if id in self._LAHSA_candidates:
+                            idx_LAHSA = self._LAHSA_candidates.index(id)
+                            self._LAHSA_tmp[idx_LAHSA] = True
 
+                        self._LAHSA_choose()
+                        self._SPLA_current_list.pop()
+                        self._SPLA_tmp[i] = False
+                        if id in self._LAHSA_candidates:
+                            self._LAHSA_tmp[idx_LAHSA] = False
+                        self._reset_flag()
         elif self._SPLA_flag is True:
             self._LAHSA_choose()
 
     def _LAHSA_choose(self):
         self._reset_flag()
-
         if self._SPLA_flag is True and self._LAHSA_flag is True:
             LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
                                                    self.b)
@@ -141,21 +140,23 @@ class HomelessService(object):
                  'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
                  'SPLA_eff': SPLA_eff,
                  'LAHSA_eff': LAHSA_eff})
+
         elif self._LAHSA_flag is False:
             for j in range(self._LAHSA_candidates_cnt):
                 if self._LAHSA_tmp[j] is False:
-                    self._LAHSA_tmp[j] = True
                     id = self._LAHSA_candidates[j]
-                    if id in self._SPLA_candidates:
-                        idx_SPLA = self._SPLA_candidates.index(id)
-                        self._SPLA_tmp[idx_SPLA] = True
-                    self._LAHSA_current_list.append(id)
-                    self._SPLA_choose()
-                    self._LAHSA_current_list.pop()
-                    self._LAHSA_tmp[j] = False
-                    if id in self._SPLA_candidates:
-                        self._SPLA_tmp[idx_SPLA] = False
-                    self._reset_flag()
+                    if self._check_bed(self._LAHSA_current_list + [id] + self.LAHSA_id):
+                        self._LAHSA_tmp[j] = True
+                        if id in self._SPLA_candidates:
+                            idx_SPLA = self._SPLA_candidates.index(id)
+                            self._SPLA_tmp[idx_SPLA] = True
+                        self._LAHSA_current_list.append(id)
+                        self._SPLA_choose()
+                        self._LAHSA_current_list.pop()
+                        self._LAHSA_tmp[j] = False
+                        if id in self._SPLA_candidates:
+                            self._SPLA_tmp[idx_SPLA] = False
+                        self._reset_flag()
         elif self._LAHSA_flag is True:
             self._SPLA_choose()
 
