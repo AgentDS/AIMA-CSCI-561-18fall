@@ -100,9 +100,15 @@ class HomelessService(object):
         self._reset_flag()
 
         if self._SPLA_flag is True and self._LAHSA_flag is True:
+            LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
+                                                   self.b)
+            SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
+                                                  self.p)
             self.resolution.append(
                 {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
+                 'SPLA_eff': SPLA_eff,
+                 'LAHSA_eff': LAHSA_eff})
         elif self._SPLA_flag is False:
             for i in range(self._SPLA_candidates_cnt):
                 if self._SPLA_tmp[i] is False:
@@ -126,9 +132,15 @@ class HomelessService(object):
         self._reset_flag()
 
         if self._SPLA_flag is True and self._LAHSA_flag is True:
+            LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
+                                                   self.b)
+            SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
+                                                  self.p)
             self.resolution.append(
                 {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
+                 'SPLA_eff': SPLA_eff,
+                 'LAHSA_eff': LAHSA_eff})
         elif self._LAHSA_flag is False:
             for j in range(self._LAHSA_candidates_cnt):
                 if self._LAHSA_tmp[j] is False:
@@ -158,13 +170,23 @@ class HomelessService(object):
         self._reset_LAHSA_tmp()
         self._SPLA_choose_modify()
 
+    def _calculate_efficiency(self, app_id_list, limit):
+        app_list = self._get_app_info(app_id_list)
+        days = [app.days[0] for app in app_list]
+        return np.sum(reduce(np.add, days)) / np.float(limit * 7)
+
     def _SPLA_choose_modify(self):
         self._reset_flag()
-
         if self._SPLA_flag is True and self._LAHSA_flag is True:
+            LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
+                                                   self.b)
+            SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
+                                                  self.p)
             self.resolution_modify.append(
                 {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
+                 'SPLA_eff': SPLA_eff,
+                 'LAHSA_eff': LAHSA_eff})
         elif self._SPLA_flag is False:
             for i in range(self._SPLA_candidates_cnt):
                 if self._SPLA_tmp[i] is False:
@@ -188,11 +210,17 @@ class HomelessService(object):
 
     def _LAHSA_choose_modify(self):
         self._reset_flag()
-
         if self._SPLA_flag is True and self._LAHSA_flag is True:
+            LAHSA_eff = self._calculate_efficiency(self._LAHSA_current_list + self.LAHSA_id,
+                                                   self.b)
+            SPLA_eff = self._calculate_efficiency(self._SPLA_current_list + self.SPLA_id,
+                                                  self.p)
             self.resolution_modify.append(
                 {'SPLA': self._SPLA_current_list + self.SPLA_id,
-                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
+                 'SPLA_eff': SPLA_eff,
+                 'LAHSA_eff': LAHSA_eff})
+
         elif self._LAHSA_flag is False:
             for j in range(self._LAHSA_candidates_cnt):
                 if self._LAHSA_tmp[j] is False:
@@ -263,8 +291,3 @@ def problem_generator(in_path):
                 app = ApplicantInfo(line.strip())
                 app_info[app.app_id] = app
     return HomelessService(b, p, L, LAHSA_id_list, S, SPLA_id_list, A, app_info)
-
-
-def cal_point(app_list, Limit):
-    days = [app.days[0] for app in app_list]
-    return np.sum(reduce(np.add, days)) / np.float(Limit * 7)
