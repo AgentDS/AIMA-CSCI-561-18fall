@@ -10,37 +10,149 @@ import numpy as np
 
 
 class HomelessService(object):
-    def __init__(self, b, p, L, LASHA_id, S, SPLA_id, A, app_info):
+    def __init__(self, b, p, L, LAHSA_id, S, SPLA_id, A, app_info):
         self.b = b
         self.p = p
         self.L = L
-        self.LASHA_id = LASHA_id
+        self.LAHSA_id = LAHSA_id
         self.S = S
         self.SPLA_id = SPLA_id
         self.A = A
         self.app_info = app_info
+        self.resolution = []
 
-    def _SPLA_requirement(self):
+        # to indicate whether application have been choose, True means having been used
+        self._SPLA_tmp = None
+        self._LAHSA_tmp = None
+
+        self._SPLA_flag = False  # if True then means choose ends for SPLA
+        self._LAHSA_flag = False  # if True then means choose ends for LAHSA
+
+        # to store IDs chosen currently
+        self._SPLA_current_list = []
+        self._LAHSA_current_list = []
+
+        # to store IDs which are qualified for requirements
+        self._SPLA_candidates = None
+        self._LAHSA_candidates = None
+        self._get_SPLA_candidate()
+        self._get_LAHSA_candidate()
+
+    def _reset_SPLA_tmp(self):
+        self._SPLA_tmp = [False] * len(self._SPLA_candidates)
+
+    def _reset_LAHSA_tmp(self):
+        self._LAHSA_tmp = [False] * len(self._LAHSA_candidates)
+
+    def _get_SPLA_candidate(self):
         candidates = []
-        for app in self.app_info:
+        for id in self.app_info:
+            app = self.app_info[id]
             if app.car * app.driver_license * (1 - app.med) == 1:
-                candidates.append(app)
+                if app.app_id not in self.SPLA_id and app.app_id not in self.LAHSA_id:
+                    candidates.append(id)
         self._SPLA_candidates = candidates
+        self._SPLA_candidates_cnt = len(candidates)
 
-    def _LAHSA_requirement(self):
+    def _get_LAHSA_candidate(self):
         candidates = []
-        for app in self.app_info:
+        for id in self.app_info:
+            app = self.app_info[id]
             if app.gender == 'F' and app.age > 17 and app.pets == 0:
-                candidates.append(app)
+                if app.app_id not in self.SPLA_id and app.app_id not in self.LAHSA_id:
+                    candidates.append(id)
         self._LAHSA_candidates = candidates
+        self._LAHSA_candidates_cnt = len(candidates)
 
-    def _check_bed(self, LAHSA_tmp_choose):
-        days = [app.days for app in LAHSA_tmp_choose]
+    # get application information list given application ID number
+    def _get_app_info(self, id_list):
+        return [self.app_info[i] for i in id_list]
+
+    def _check_bed(self, LAHSA_tmp_id):
+        LAHSA_tmp_app_info = self._get_app_info(LAHSA_tmp_id)
+        days = [app.days for app in LAHSA_tmp_app_info]
+        # True means still have space
         return np.all(reduce(np.add, days) <= self.b)
 
-    def _check_parking(self, SPLA_tmp_choose):
-        days = [app.days for app in SPLA_tmp_choose]
+    def _check_parking(self, SPLA_tmp_id):
+        SPLA_tmp_app_info = self._get_app_info(SPLA_tmp_id)
+        days = [app.days for app in SPLA_tmp_app_info]
+        # True means still have space
         return np.all(reduce(np.add, days) <= self.p)
+
+    def solve(self):
+        self._reset_SPLA_tmp()
+        self._reset_LAHSA_tmp()
+        self._SPLA_choose()
+
+    def _SPLA_choose(self):
+        if np.all(self._SPLA_tmp):
+            self._SPLA_flag = True
+        else:
+            self._SPLA_flag = False
+
+        if self._SPLA_flag is True and self._LAHSA_flag is True:
+            self.resolution.append(
+                {'SPLA': self._SPLA_current_list + self.SPLA_id,
+                 'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+        elif self._SPLA_flag is False and self._LAHSA_flag is False:
+            for i in range(self._SPLA_candidates_cnt):
+                if self._SPLA_tmp[i] is False:
+                    self._SPLA_tmp[i] = True
+                    id = self._SPLA_candidates[i]
+                    if id in self._LAHSA_candidates:
+                        idx_LAHSA = self._LAHSA_candidates.index(id)
+                        self._LAHSA_tmp[idx_LAHSA] = True
+                    self._SPLA_current_list.append(id)
+                    self._LAHSA_choose()
+                    self._SPLA_current_list.pop()
+                    self._SPLA_tmp[i] = False
+                    if id in self._LAHSA_candidates:
+                        self._LAHSA_tmp[idx_LAHSA] = False
+        elif self._LAHSA_flag is True and self._SPLA_flag is False:
+            rest_SPLA_id = [self._SPLA_candidates[ii] for ii in range(self._SPLA_candidates_cnt) if
+                            self._SPLA_tmp[ii] is False]
+            self.resolution.append({'SPLA': self._SPLA_current_list + rest_SPLA_id + self.SPLA_id,
+                                    'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+        elif self._LAHSA_flag is False and self._SPLA_flag is True:
+            rest_LAHSA_id = [self._LAHSA_candidates[ii] for ii in range(self._LAHSA_candidates_cnt) if
+                             self._LAHSA_tmp[ii] is False]
+            self.resolution.append({'SPLA': self._SPLA_current_list + self.SPLA_id,
+                                    'LAHSA': self._LAHSA_current_list + rest_LAHSA_id + self.LAHSA_id})
+
+    def _LAHSA_choose(self):
+        if np.all(self._LAHSA_tmp):
+            self._LAHSA_flag = True
+        else:
+            self._LAHSA_flag = False
+
+        if self._SPLA_flag is True and self._LAHSA_flag is True:
+            self.resolution.append({'SPLA': self._SPLA_current_list,
+                                    'LAHSA': self._LAHSA_current_list})
+        elif self._LAHSA_flag is False and self._SPLA_flag is False:
+            for j in range(self._LAHSA_candidates_cnt):
+                if self._LAHSA_tmp[j] is False:
+                    self._LAHSA_tmp[j] = True
+                    id = self._LAHSA_candidates[j]
+                    if id in self._SPLA_candidates:
+                        idx_SPLA = self._SPLA_candidates.index(id)
+                        self._SPLA_tmp[idx_SPLA] = True
+                    self._LAHSA_current_list.append(id)
+                    self._SPLA_choose()
+                    self._LAHSA_current_list.pop()
+                    self._LAHSA_tmp[j] = False
+                    if id in self._SPLA_candidates:
+                        self._SPLA_tmp[idx_SPLA] = False
+        elif self._LAHSA_flag is True and self._SPLA_flag is False:
+            rest_SPLA_id = [self._SPLA_candidates[ii] for ii in range(self._SPLA_candidates_cnt) if
+                            self._SPLA_tmp[ii] is False]
+            self.resolution.append({'SPLA': self._SPLA_current_list + rest_SPLA_id + self.SPLA_id,
+                                    'LAHSA': self._LAHSA_current_list + self.LAHSA_id})
+        elif self._LAHSA_flag is False and self._SPLA_flag is True:
+            rest_LAHSA_id = [self._LAHSA_candidates[ii] for ii in range(self._LAHSA_candidates_cnt) if
+                             self._LAHSA_tmp[ii] is False]
+            self.resolution.append({'SPLA': self._SPLA_current_list + self.SPLA_id,
+                                    'LAHSA': self._LAHSA_current_list + rest_LAHSA_id + self.LAHSA_id})
 
 
 class ApplicantInfo(object):
@@ -69,9 +181,9 @@ class ApplicantInfo(object):
 
 def problem_generator(in_path):
     line_ct = 0
-    LASHA_id_list = []
+    LAHSA_id_list = []
     SPLA_id_list = []
-    app_info = []
+    app_info = dict()
     with open(in_path, 'r') as f_in:
         for line in f_in:
             line_ct += 1
@@ -82,7 +194,7 @@ def problem_generator(in_path):
             elif line_ct == 3:
                 L = int(line.strip())  # number of applicants chosen by LAHSA so far
             elif line_ct <= 3 + L:
-                LASHA_id_list.append(int(line.strip()))
+                LAHSA_id_list.append(int(line.strip()))
             elif line_ct == 4 + L:
                 S = int(line.strip())  # number of applicants chosen by SPLA so far
             elif line_ct <= 4 + L + S:
@@ -90,5 +202,11 @@ def problem_generator(in_path):
             elif line_ct == 5 + L + S:
                 A = int(line.strip())  # total number of applicants
             elif line_ct <= 5 + L + S + A:
-                app_info.append(ApplicantInfo(line.strip()))
-    return HomelessService(b, p, L, LASHA_id_list, S, SPLA_id_list, A, app_info)
+                app = ApplicantInfo(line.strip())
+                app_info[app.app_id] = app
+    return HomelessService(b, p, L, LAHSA_id_list, S, SPLA_id_list, A, app_info)
+
+
+def cal_point(app_list, Limit):
+    days = [app.days[0] for app in app_list]
+    return np.sum(reduce(np.add, days)) / np.float(Limit * 7)
