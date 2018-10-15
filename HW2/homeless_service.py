@@ -7,6 +7,7 @@
 # @Software: PyCharm
 
 import numpy as np
+import copy
 
 
 class HomelessService(object):
@@ -118,7 +119,6 @@ class HomelessService(object):
                         if id in self._LAHSA_candidates:
                             idx_LAHSA = self._LAHSA_candidates.index(id)
                             self._LAHSA_tmp[idx_LAHSA] = True
-
                         self._LAHSA_choose()
                         self._SPLA_current_list.pop()
                         self._SPLA_tmp[i] = False
@@ -147,10 +147,10 @@ class HomelessService(object):
                     id = self._LAHSA_candidates[j]
                     if self._check_bed(self._LAHSA_current_list + [id] + self.LAHSA_id):
                         self._LAHSA_tmp[j] = True
+                        self._LAHSA_current_list.append(id)
                         if id in self._SPLA_candidates:
                             idx_SPLA = self._SPLA_candidates.index(id)
                             self._SPLA_tmp[idx_SPLA] = True
-                        self._LAHSA_current_list.append(id)
                         self._SPLA_choose()
                         self._LAHSA_current_list.pop()
                         self._LAHSA_tmp[j] = False
@@ -169,7 +169,7 @@ class HomelessService(object):
     def solve_modify(self):
         self._reset_SPLA_tmp()
         self._reset_LAHSA_tmp()
-        self._SPLA_choose_modify()
+        print(self._SPLA_choose_modify())
 
     def _calculate_efficiency(self, app_id_list, limit):
         app_list = self._get_app_info(app_id_list)
@@ -188,7 +188,10 @@ class HomelessService(object):
                  'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
                  'SPLA_eff': SPLA_eff,
                  'LAHSA_eff': LAHSA_eff})
+            return {'SPLA': self._SPLA_current_list + self.SPLA_id, 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
+                    'SPLA_eff': SPLA_eff, 'LAHSA_eff': LAHSA_eff}
         elif self._SPLA_flag is False:
+            current_level = []
             for i in range(self._SPLA_candidates_cnt):
                 if self._SPLA_tmp[i] is False:
                     id = self._SPLA_candidates[i]
@@ -198,16 +201,23 @@ class HomelessService(object):
                         if id in self._LAHSA_candidates:
                             idx_LAHSA = self._LAHSA_candidates.index(id)
                             self._LAHSA_tmp[idx_LAHSA] = True
-
-                        self._LAHSA_choose_modify()
+                        current_level.append(self._LAHSA_choose_modify())
                         self._SPLA_current_list.pop()
                         self._SPLA_tmp[i] = False
                         if id in self._LAHSA_candidates:
                             self._LAHSA_tmp[idx_LAHSA] = False
                         self._reset_flag()
-
+            best_SPLA_eff = 0
+            best_plan = None
+            plan_cnt = len(current_level)
+            for i in range(plan_cnt):
+                if current_level[i] is not None:
+                    if current_level[i]['SPLA_eff'] > best_SPLA_eff:
+                        best_SPLA_eff = current_level[i]['SPLA_eff']
+                        best_plan = current_level[i]
+            return best_plan
         elif self._SPLA_flag is True:
-            self._LAHSA_choose_modify()
+            return self._LAHSA_choose_modify()
 
     def _LAHSA_choose_modify(self):
         self._reset_flag()
@@ -221,25 +231,39 @@ class HomelessService(object):
                  'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
                  'SPLA_eff': SPLA_eff,
                  'LAHSA_eff': LAHSA_eff})
+            return {'SPLA': self._SPLA_current_list + self.SPLA_id, 'LAHSA': self._LAHSA_current_list + self.LAHSA_id,
+                    'SPLA_eff': SPLA_eff, 'LAHSA_eff': LAHSA_eff}
+
 
         elif self._LAHSA_flag is False:
+            current_level = []
             for j in range(self._LAHSA_candidates_cnt):
                 if self._LAHSA_tmp[j] is False:
                     id = self._LAHSA_candidates[j]
                     if self._check_bed(self._LAHSA_current_list + [id] + self.LAHSA_id):
                         self._LAHSA_tmp[j] = True
+                        self._LAHSA_current_list.append(id)
                         if id in self._SPLA_candidates:
                             idx_SPLA = self._SPLA_candidates.index(id)
                             self._SPLA_tmp[idx_SPLA] = True
-                        self._LAHSA_current_list.append(id)
-                        self._SPLA_choose_modify()
+                            current_level.append(self._SPLA_choose_modify())
                         self._LAHSA_current_list.pop()
                         self._LAHSA_tmp[j] = False
                         if id in self._SPLA_candidates:
                             self._SPLA_tmp[idx_SPLA] = False
                         self._reset_flag()
+            best_LAHSA_eff = 0
+            best_plan = None
+            plan_cnt = len(current_level)
+            for i in range(plan_cnt):
+                if current_level[i] is not None:
+                    if current_level[i]['LAHSA_eff'] > best_LAHSA_eff:
+                        best_LAHSA_eff = current_level[i]['LAHSA_eff']
+                        best_plan = current_level[i]
+            return best_plan
+
         elif self._LAHSA_flag is True:
-            self._SPLA_choose_modify()
+            return self._SPLA_choose_modify()
 
 
 class ApplicantInfo(object):
