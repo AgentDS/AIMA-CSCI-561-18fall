@@ -17,7 +17,7 @@ import homeless_service as hs
 import time
 
 
-def case_time(in_path, method):
+def case_time(in_path, method=0):
     answer = {'input0.txt': 1,
               'input1.txt': 3,
               'input2.txt': 4,
@@ -28,8 +28,10 @@ def case_time(in_path, method):
               'input10_2.txt': 3,
               'input20.txt': 1,
               'input21.txt': 5,
+              'input24.txt': 8,
               'input25.txt': 4}
 
+    method = 0
     problem = hs.problem_generator(in_path)
     path = in_path + (13 - len(in_path)) * ' '
     print("case: ", path, end=' ')
@@ -76,11 +78,14 @@ def excute_list(method):
     case_time('input21.txt', method)
     # case_time('input22.txt', method)
     # case_time('input23.txt', method)
-    # case_time('input24.txt', method)
+    case_time('input24.txt', method)
     case_time('input25.txt', method)
     print("")
 
 
 if __name__ == '__main__':
     excute_list(0)
-    excute_list(1)
+    # excute_list(1)
+    # problem = hs.problem_generator('input10_2.txt')
+    # problem.solve()
+    # print(problem.SPLA_best_first_id)
