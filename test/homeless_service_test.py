@@ -70,15 +70,15 @@ class HomelessServiceTestCase(unittest.TestCase):
             answer = int(f.readline().strip())
         self.assertEqual(result, answer)
 
-    def test_input10_2(self):
-        """Test on case input10_2.txt"""
-        in_path = './HW2/input10_2.txt'
-        problem = hs.problem_generator(in_path)
-        problem.solve()
-        result = problem.SPLA_best_first_id
-        with open('./HW2/output10_2.txt', 'r') as f:
-            answer = int(f.readline().strip())
-        self.assertEqual(result, answer)
+    # def test_input10_2(self):
+    #     """Test on case input10_2.txt"""
+    #     in_path = './HW2/input10_2.txt'
+    #     problem = hs.problem_generator(in_path)
+    #     problem.solve()
+    #     result = problem.SPLA_best_first_id
+    #     with open('./HW2/output10_2.txt', 'r') as f:
+    #         answer = int(f.readline().strip())
+    #     self.assertEqual(result, answer)
 
     def test_input20(self):
         """Test on case input20.txt"""
