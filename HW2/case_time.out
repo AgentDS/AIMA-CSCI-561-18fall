@@ -1,0 +1,14 @@
+case:  input0.txt    .. OK, SPLA ID:  1 , time =   0.000997 s                                                                                            
+case:  input1.txt    .. OK, SPLA ID:  3 , time =   0.025906 s                                                                                            
+case:  input2.txt    .. OK, SPLA ID:  4 , time =   0.001005 s                                                                                            
+case:  input6.txt    .. OK, SPLA ID:  1 , time =   0.001350 s                                                                                            
+case:  input7.txt    .. OK, SPLA ID:  3 , time =   0.001339 s                                                                                            
+case:  input8.txt    .. OK, SPLA ID:  6 , time =   1.958514 s                                                                                            
+case:  input10_1.txt .. OK, SPLA ID:  1 , time =   0.003847 s                                                                                            
+case:  input10_2.txt .. OK, SPLA ID:  3 , time =   0.019758 s                                                                                            
+case:  input20.txt   .. OK, SPLA ID:  1 , time =   0.000656 s                                                                                            
+case:  input21.txt   .. OK, SPLA ID:  5 , time =   7.097561 s                                                                                            
+case:  input22.txt   .. OK, SPLA ID:  10 , time =  65.577594 s                                                                                           
+case:  input23.txt   .. OK, SPLA ID:  3 , time = 675.570962 s                                                                                            
+case:  input24.txt   .. OK, SPLA ID:  8 , time =   0.846644 s                                                                                            
+case:  input25.txt   .. OK, SPLA ID:  4 , time =   0.117120 s

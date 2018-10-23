@@ -28,64 +28,44 @@ def case_time(in_path, method=0):
               'input10_2.txt': 3,
               'input20.txt': 1,
               'input21.txt': 5,
+              'input22.txt': 10,
+              'input23.txt': 3,
               'input24.txt': 8,
               'input25.txt': 4}
 
-    method = 0
     problem = hs.problem_generator(in_path)
     path = in_path + (13 - len(in_path)) * ' '
     print("case: ", path, end=' ')
-    if method == 0:
-        s = time.time()
-        try:
-            problem.solve()
-            e = time.time()
-            if problem.SPLA_best_first_id == answer[in_path]:
-                msg = 'OK,'
-            else:
-                msg = 'Err,'
-            print('..', msg, "SPLA ID: ", problem.SPLA_best_first_id, ", time = %10f s" % (e - s))
-        except TypeError:
-            print("'NoneType' object has no attribute '__getitem__'")
-    else:
-        s = time.time()
-        try:
-            problem.solve_modify()
-            e = time.time()
-            if problem.SPLA_best_first_id == answer[in_path]:
-                msg = 'OK,'
-            else:
-                msg = 'Err,'
-            print('..', msg, "SPLA ID: ", problem.SPLA_best_first_id, ", time = %10f s" % (e - s))
-        except TypeError:
-            print("'NoneType' object has no attribute '__getitem__'")
+    s = time.time()
+    try:
+        problem.solve()
+        e = time.time()
+        if problem.SPLA_best_first_id == answer[in_path]:
+            msg = 'OK,'
+        else:
+            msg = 'Err,'
+        print('..', msg, "SPLA ID: ", problem.SPLA_best_first_id, ", time = %10f s" % (e - s))
+    except TypeError:
+        print("'NoneType' object has no attribute '__getitem__'")
 
 
-def excute_list(method):
-    if method == 0:
-        msg = 'original version:'
-    else:
-        msg = 'modified version:'
-    print(msg)
-    case_time('input0.txt', method)
-    case_time('input1.txt', method)
-    case_time('input2.txt', method)
-    case_time('input6.txt', method)
-    case_time('input7.txt', method)
-    case_time('input10_1.txt', method)
-    case_time('input10_2.txt', method)
-    case_time('input20.txt', method)
-    case_time('input21.txt', method)
-    # case_time('input22.txt', method)
-    # case_time('input23.txt', method)
-    case_time('input24.txt', method)
-    case_time('input25.txt', method)
+def excute_list():
+    case_time('input0.txt')
+    case_time('input1.txt')
+    case_time('input2.txt')
+    case_time('input6.txt')
+    case_time('input7.txt')
+    case_time('input8.txt')
+    case_time('input10_1.txt')
+    case_time('input10_2.txt')
+    case_time('input20.txt')
+    case_time('input21.txt')
+    case_time('input22.txt')
+    case_time('input23.txt')
+    case_time('input24.txt')
+    case_time('input25.txt')
     print("")
 
 
 if __name__ == '__main__':
-    excute_list(0)
-    # excute_list(1)
-    # problem = hs.problem_generator('input10_2.txt')
-    # problem.solve()
-    # print(problem.SPLA_best_first_id)
+    excute_list()

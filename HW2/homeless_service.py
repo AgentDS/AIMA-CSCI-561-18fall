@@ -102,7 +102,7 @@ class HomelessService(object):
         for id in rest_LAHSA_id_list:
             app_info = self._get_app_info([id] + self._LAHSA_current_list + self.LAHSA_id)
             days = [app.days for app in app_info]
-            if np.any(reduce(np.add, days) > self.p):
+            if np.any(reduce(np.add, days) > self.b):
                 continue
             else:
                 return False  # False means still has beds for the rest candidates
@@ -119,21 +119,14 @@ class HomelessService(object):
             self._LAHSA_flag = False
 
     def _reset_flag2(self):
-        if self._SPLA_flag is False:
-            if np.all(self._SPLA_tmp):
-                self._SPLA_flag = True
-            elif np.all(self._SPLA_tmp) is False and self._SPLA_no_more_check():
-                self._SPLA_flag = True
-            else:
-                self._SPLA_flag = False
-
-        if self._LAHSA_flag is False:
-            if np.all(self._LAHSA_tmp):
-                self._LAHSA_flag = True
-            elif np.all(self._LAHSA_tmp) is False and self._LAHSA_no_more_check():
-                self._LAHSA_flag = True
-            else:
-                self._LAHSA_flag = False
+        if np.all(self._SPLA_tmp) or self._SPLA_no_more_check():
+            self._SPLA_flag = True
+        else:
+            self._SPLA_flag = False
+        if np.all(self._LAHSA_tmp) or self._LAHSA_no_more_check():
+            self._LAHSA_flag = True
+        else:
+            self._LAHSA_flag = False
 
     def _calculate_efficiency(self, app_id_list, limit):
         app_list = self._get_app_info(app_id_list)
@@ -156,7 +149,7 @@ class HomelessService(object):
                     best_plan = current_level_plans[i]
         return best_plan
 
-    # TODO: fix resolve
+
     def solve(self):
         self._reset_SPLA_tmp()
         self._reset_LAHSA_tmp()
@@ -189,11 +182,7 @@ class HomelessService(object):
                         self._SPLA_tmp[i] = False
                         if id in self._LAHSA_candidates:
                             self._LAHSA_tmp[idx_LAHSA] = False
-                        self._reset_flag()
-                    else:
-                        self._SPLA_flag = True
-                        current_level.append(self._LAHSA_choose())
-                        self._SPLA_flag = False
+                        self._reset_flag2()
             # SPLA chooses plan with maximum parking using efficiency
             return self._choose_max(current_level, 'SPLA_eff')
         elif self._SPLA_flag is True:
@@ -221,19 +210,14 @@ class HomelessService(object):
                         if id in self._SPLA_candidates:
                             idx_SPLA = self._SPLA_candidates.index(id)
                             self._SPLA_tmp[idx_SPLA] = True
-                            current_level.append(self._SPLA_choose())
+                        current_level.append(self._SPLA_choose())
                         self._LAHSA_current_list.pop()
                         self._LAHSA_tmp[j] = False
                         if id in self._SPLA_candidates:
                             self._SPLA_tmp[idx_SPLA] = False
-                        self._reset_flag()
-                    else:
-                        self._LAHSA_flag = True
-                        current_level.append(self._SPLA_choose())
-                        self._LAHSA_flag = False
+                        self._reset_flag2()
             # LAHSA chooses plan with maximum bed using efficiency
             return self._choose_max(current_level, 'LAHSA_eff')
-
         elif self._LAHSA_flag is True:
             return self._SPLA_choose()
 
