@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/HW3/SpeedRacer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW3/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW3/hw3cs561f2018.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW3/mdp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW2/case_time.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/case_time.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW2/homeless_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW2/homeless_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW3/F18HW3_V2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/F18HW3_V2.pdf" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,6 +31,7 @@
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_in_simple_reflex_agent_test_py.coverage" NAME="Unittests in simple_reflex_agent_test.py Coverage Results" MODIFIED="1535829353961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_pilot_scooter_test_PilotScooterTestCase_test_input2.coverage" NAME="Unittests for pilot_scooter_test.PilotScooterTestCase.test_input2 Coverage Results" MODIFIED="1536827377660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$pilot_scooter.coverage" NAME="pilot_scooter Coverage Results" MODIFIED="1536883417245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1b" />
+    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw3cs561f2018.coverage" NAME="hw3cs561f2018 Coverage Results" MODIFIED="1542177925202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_simple_reflex_agent_test_MyTestCase.coverage" NAME="Unittests for simple_reflex_agent_test.MyTestCase Coverage Results" MODIFIED="1535828611911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
   <component name="DatabaseView">
@@ -45,13 +50,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="hw2cs561f2018.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HW2/hw2cs561f2018.py">
+      <file leaf-file-name="mdp.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HW3/mdp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state relative-caret-position="558">
+              <caret line="495" column="3" selection-start-line="495" selection-start-column="3" selection-end-line="495" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpeedRacer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
               <folding>
-                <element signature="e#181#218#0" expanded="true" />
+                <element signature="e#183#220#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hw3cs561f2018.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+              <folding>
+                <element signature="e#183#220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,6 +140,10 @@
         <option value="$PROJECT_DIR$/test/homeless_service_test.py" />
         <option value="$PROJECT_DIR$/HW2/homeless_service.py" />
         <option value="$PROJECT_DIR$/HW2/case_time.py" />
+        <option value="$PROJECT_DIR$/HW3/mdp.py" />
+        <option value="$PROJECT_DIR$/HW3/__init__.py" />
+        <option value="$PROJECT_DIR$/HW3/hw3cs561f2018.py" />
+        <option value="$PROJECT_DIR$/HW3/SpeedRacer.py" />
       </list>
     </option>
   </component>
@@ -135,7 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,17 +175,13 @@
             <path>
               <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
               <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AIMA-CSCI-561-18fall" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AIMA-CSCI-561-18fall" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="HW3" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -182,7 +207,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.case_time">
+  <component name="RunManager" selected="Python.hw3cs561f2018">
     <configuration name="case_time" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AIMA-CSCI-561-18fall" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -221,6 +246,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="hw3cs561f2018" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AIMA-CSCI-561-18fall" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HW3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW3/hw3cs561f2018.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="test_bench" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AIMA-CSCI-561-18fall" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -235,25 +279,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_bench.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="xxx" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="AIMA-CSCI-561-18fall" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HW1b" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW1b/xxx.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -275,18 +300,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.test_bench" />
-      <item itemvalue="Python.xxx" />
       <item itemvalue="Python.hw2cs561f2018" />
       <item itemvalue="Python tests.Unittests for homeless_service_test.HomelessServiceTestCase.test_input0" />
       <item itemvalue="Python.case_time" />
+      <item itemvalue="Python.hw3cs561f2018" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.hw3cs561f2018" />
         <item itemvalue="Python.case_time" />
         <item itemvalue="Python.test_bench" />
         <item itemvalue="Python.hw2cs561f2018" />
         <item itemvalue="Python tests.Unittests for homeless_service_test.HomelessServiceTestCase.test_input0" />
-        <item itemvalue="Python.xxx" />
       </list>
     </recent_temporary>
   </component>
@@ -345,7 +370,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="-269" y="22" width="823" height="778" extended-state="0" />
     <layout>
       <window_info id="TODO" order="3" weight="0.29483038" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -354,16 +379,16 @@
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.36270192" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.40413794" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.16551724" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1615509" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2599232" />
       <window_info anchor="right" id="R Packages" order="6" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="Database" order="5" weight="0.32961932" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32956383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.46758622" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.49779737" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -373,30 +398,30 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1337931" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21567044" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="TODO" order="3" weight="0.29483038" />
       <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1337931" />
       <window_info anchor="right" id="R Packages" order="6" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.36270192" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
       <window_info anchor="right" x="0" y="0" width="270" height="600" id="Documentation" order="7" side_tool="true" weight="0.0638126" />
       <window_info anchor="right" id="Database" order="5" weight="0.32961932" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.16551724" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32956383" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4937931" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.36270192" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,27 +432,8 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="32" />
+      <option name="time" value="33" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="self._SPLA_flag" language="Python" />
-        <watch expression="self._LAHSA_flag" language="Python" />
-        <watch expression="self._SPLA_no_more_check()" language="Python" />
-        <watch expression="self._LAHSA_no_more_check()" language="Python" />
-        <watch expression="self._LAHSA_no_more_check()" language="Python" />
-        <watch expression="self._get_app_info(self._LAHSA_current_list + self.LAHSA_id)" language="Python" />
-        <watch expression="self._get_app_info([6])" language="Python" />
-        <watch expression="self._SPLA_tmp" language="Python" />
-        <watch expression="self._LAHSA_tmp" language="Python" />
-        <watch expression="self._SPLA_candidates" language="Python" />
-        <watch expression="self._LAHSA_candidates" language="Python" />
-        <watch expression="id" language="Python" />
-        <watch expression="self._LAHSA_current_list" language="Python" />
-        <watch expression="self._SPLA_current_list" language="Python" />
-        <watch expression="self._LAHSA_no_more_check()" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -481,10 +487,67 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HW2/hw2cs561f2018.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
+        <state relative-caret-position="200">
           <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/hw2cs561f2018.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#181#218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/mdp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="495" column="3" selection-start-line="495" selection-start-column="3" selection-end-line="495" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/homeless_service.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="252" column="21" lean-forward="true" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW1b/pilot_scooter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="192" lean-forward="true" selection-start-line="192" selection-end-line="192" />
+          <folding>
+            <element signature="e#183#220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="e#183#220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#183#220#0" expanded="true" />
           </folding>
         </state>
       </provider>
