@@ -21,7 +21,12 @@ class SpeedRacer(object):
         self.start_loc = start_loc
         self.end_loc = end_loc
 
-    def solve(self):
+    def set_reward(self, crash=-100, gas=-1, destination=100):
+        self.crash = crash
+        self.gas = gas
+        self.destination = destination
+
+    def mdp_solve(self):
         pass
 
 
