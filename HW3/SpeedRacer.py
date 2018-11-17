@@ -26,6 +26,51 @@ class SpeedRacer(object):
         self.gas = gas
         self.destination = destination
 
+    # TODO: THE CORRECTED VRSION
+    # def _get_action_order(self, action):
+    #     if action == 'N':
+    #         act_order = ['N', 'W', 'E', 'S']
+    #     elif action == 'S':
+    #         act_order = ['S', 'E', 'W', 'N']
+    #     elif action == 'E':
+    #         act_order = ['E', 'N', 'S', 'W']
+    #     else:
+    #         act_order = ['W', 'S', 'N', 'E']
+    #     return act_order
+
+    # TODO: THE WRONG VRSION
+    def _get_action_order(self, action):
+        if action == 'N':
+            act_order = ['N', 'W', 'E', 'S', 'S']
+        elif action == 'S':
+            act_order = ['S', 'E', 'W', 'N', 'N']
+        elif action == 'E':
+            act_order = ['E', 'N', 'S', 'W', 'W']
+        else:
+            act_order = ['W', 'S', 'N', 'E', 'E']
+        return act_order
+
+    def _get_action_dict(self, index):
+        if index[0] == 0 and index[1] == 0:  # case 1
+            act_dict = {'N': [0, 0], 'S': [0, 1], 'E': [1, 0], 'W': [0, 0]}
+        elif index[0] == 0 and index[1] == self.s - 1:  # case 2
+            act_dict = {'N': [0, -1], 'S': [0, 0], 'E': [1, 0], 'W': [0, 0]}
+        elif index[0] == self.s - 1 and index[1] == 0:  # case 3
+            act_dict = {'N': [0, 0], 'S': [0, 1], 'E': [0, 0], 'W': [-1, 0]}
+        elif index[0] == self.s - 1 and index[1] == self.s - 1:  # case 4
+            act_dict = {'N': [0, -1], 'S': [0, 0], 'E': [0, 0], 'W': [-1, 0]}
+        elif index[1] == 0 and 0 < index[0] < self.s - 1:  # case 5
+            act_dict = {'N': [0, 0], 'S': [0, 1], 'E': [1, 0], 'W': [-1, 0]}
+        elif index[0] == 0 and 0 < index[1] < self.s - 1:  # case 6
+            act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [1, 0], 'W': [0, 0]}
+        elif index[1] == self.s - 1 and 0 < index[0] < self.s - 1:  # case 7
+            act_dict = {'N': [0, -1], 'S': [0, 0], 'E': [1, 0], 'W': [-1, 0]}
+        elif index[0] == self.s - 1 and 0 < index[1] < self.s - 1:  # case 8
+            act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [0, 0], 'W': [-1, 0]}
+        else:  # case 9
+            act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [1, 0], 'W': [-1, 0]}
+        return act_dict
+
     def idx_trans(self, index, action):
         """
         Return index list [(x1,y1), (x2,y2), (x3,y3), (x4,y4)] and moving []
@@ -55,141 +100,50 @@ class SpeedRacer(object):
         (x3,y3) is the index after moving toward South with probability 0.1, (0.8 < prob <= 0.9)
         (x4,y4) is the index after moving toward East with probability 0.1; (0.9 < prob <= 1.0)
         """
-        if index[0] == 0 and index[1] == 0:  # case 1
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[0] == 0 and index[1] == self.n - 1:  # case 2
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[0] == self.n - 1 and index[1] == 0:  # case 3
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == self.n - 1 and index[1] == self.n - 1:  # case 4
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        elif index[1] == 0 and 0 < index[0] < self.n - 1:  # case 5
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == 0 and 0 < index[1] < self.n - 1:  # case 6
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[1] == self.n - 1 and 0 < index[0] < self.n - 1:  # case 7
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == self.n - 1 and 0 < index[1] < self.n - 1:  # case 8
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        else:  # case 9
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
+        act_dict = self._get_action_dict(index)
 
     # TODO: speed
-    def trans_numpy1(self, index, action):
-        if index[0] == 0 and index[1] == 0:  # case 1
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[0] == 0 and index[1] == self.n - 1:  # case 2
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[0] == self.n - 1 and index[1] == 0:  # case 3
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == self.n - 1 and index[1] == self.n - 1:  # case 4
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        elif index[1] == 0 and 0 < index[0] < self.n - 1:  # case 5
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == 0 and 0 < index[1] < self.n - 1:  # case 6
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[1] == self.n - 1 and 0 < index[0] < self.n - 1:  # case 7
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == self.n - 1 and 0 < index[1] < self.n - 1:  # case 8
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        else:  # case 9
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-
-        if action == 'N':
-            return {'move': np.array([act_dict['N'], act_dict['E'], act_dict['W'], act_dict['S']]),
-                    'index': np.array(
-                        [index + act_dict['N'], index + act_dict['E'], index + act_dict['W'], index + act_dict['S']])}
-        elif action == 'S':
-            return {'move': np.array([act_dict['S'], act_dict['W'], act_dict['E'], act_dict['N']]),
-                    'index': np.array(
-                        [index + act_dict['S'], index + act_dict['W'], index + act_dict['E'], index + act_dict['N']])}
-        elif action == 'E':
-            return {'move': np.array([act_dict['E'], act_dict['S'], act_dict['N'], act_dict['W']]),
-                    'index': np.array(
-                        [index + act_dict['E'], index + act_dict['S'], index + act_dict['N'], index + act_dict['W']])}
-        else:
-            return {'move': np.array([act_dict['W'], act_dict['N'], act_dict['S'], act_dict['E']]),
-                    'index': np.array(
-                        [index + act_dict['W'], index + act_dict['N'], index + act_dict['S'], index + act_dict['E']])}
-
-    # TODO: speed
-    def trans_numpy2(self, index, action):
-        if index[0] == 0 and index[1] == 0:  # case 1
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[0] == 0 and index[1] == self.n - 1:  # case 2
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[0] == self.n - 1 and index[1] == 0:  # case 3
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == self.n - 1 and index[1] == self.n - 1:  # case 4
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        elif index[1] == 0 and 0 < index[0] < self.n - 1:  # case 5
-            act_dict = {'N': np.array([0, 0]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == 0 and 0 < index[1] < self.n - 1:  # case 6
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([0, 0])}
-        elif index[1] == self.n - 1 and 0 < index[0] < self.n - 1:  # case 7
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 0]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-        elif index[0] == self.n - 1 and 0 < index[1] < self.n - 1:  # case 8
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([0, 0]), 'W': np.array([-1, 0])}
-        else:  # case 9
-            act_dict = {'N': np.array([0, -1]), 'S': np.array([0, 1]), 'E': np.array([1, 0]), 'W': np.array([-1, 0])}
-
-        if action == 'N':
-            # return index + np.array([act_dict['N'],act_dict['E'],act_dict['W'],act_dict['S']])
-            return {'move': np.array([act_dict['N'], act_dict['E'], act_dict['W'], act_dict['S']]),
-                    'index': index + np.array([act_dict['N'], act_dict['E'], act_dict['W'], act_dict['S']])}
-        elif action == 'S':
-            # return index + np.array([act_dict['S'],act_dict['W'],act_dict['E'],act_dict['N']])
-            return {'move': np.array([act_dict['S'], act_dict['W'], act_dict['E'], act_dict['N']]),
-                    'index': index + np.array([act_dict['S'], act_dict['W'], act_dict['E'], act_dict['N']])}
-        elif action == 'E':
-            # return index + np.array([act_dict['E'],act_dict['S'],act_dict['N'],act_dict['W']])
-            return {'move': np.array([act_dict['E'], act_dict['S'], act_dict['N'], act_dict['W']]),
-                    'index': index + np.array([act_dict['E'], act_dict['S'], act_dict['N'], act_dict['W']])}
-        else:
-            # return index + np.array([act_dict['W'],act_dict['N'],act_dict['S'],act_dict['E']])
-            return {'move': np.array([act_dict['W'], act_dict['N'], act_dict['S'], act_dict['E']]),
-                    'index': index + np.array([act_dict['W'], act_dict['N'], act_dict['S'], act_dict['E']])}
+    def trans_numpy(self, index, action):
+        act_dict = self._get_action_dict(index)
+        act_order = self._get_action_order(action)
+        move = np.array([act_dict[d] for d in act_order], dtype=int)
+        return {'move': move, 'index': index.astype(int) + move}
 
     # TODO: speed
     def trans_list(self, index, action):
-        if index[0] == 0 and index[1] == 0:  # case 1
-            act_dict = {'N': [0, 0], 'S': [0, 1], 'E': [1, 0], 'W': [0, 0]}
-        elif index[0] == 0 and index[1] == self.n - 1:  # case 2
-            act_dict = {'N': [0, -1], 'S': [0, 0], 'E': [1, 0], 'W': [0, 0]}
-        elif index[0] == self.n - 1 and index[1] == 0:  # case 3
-            act_dict = {'N': [0, 0], 'S': [0, 1], 'E': [0, 0], 'W': [-1, 0]}
-        elif index[0] == self.n - 1 and index[1] == self.n - 1:  # case 4
-            act_dict = {'N': [0, -1], 'S': [0, 0], 'E': [0, 0], 'W': [-1, 0]}
-        elif index[1] == 0 and 0 < index[0] < self.n - 1:  # case 5
-            act_dict = {'N': [0, 0], 'S': [0, 1], 'E': [1, 0], 'W': [-1, 0]}
-        elif index[0] == 0 and 0 < index[1] < self.n - 1:  # case 6
-            act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [1, 0], 'W': [0, 0]}
-        elif index[1] == self.n - 1 and 0 < index[0] < self.n - 1:  # case 7
-            act_dict = {'N': [0, -1], 'S': [0, 0], 'E': [1, 0], 'W': [-1, 0]}
-        elif index[0] == self.n - 1 and 0 < index[1] < self.n - 1:  # case 8
-            act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [0, 0], 'W': [-1, 0]}
-        else:  # case 9
-            act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [1, 0], 'W': [-1, 0]}
+        act_dict = self._get_action_dict(index)
+        act_order = self._get_action_order(action)
+        return {'index': [[index[i] + act_dict[d][i] for i in range(2)] for d in act_order],
+                'move': [act_dict[d] for d in act_order]}
 
-        if action == 'N':
-            # TODO
-            new_index = []
-            pass
-        elif action =='S':
-            # TODO
-            pass
-        elif action == 'E':
-            # TODO
-            pass
-        else:
-            # TODO
-            pass
+    # def _map_grid(self):
+    #     grid_list = []
 
+    def _make_Rmat(self):
+        s = self.s
+        Rmat = np.zeros(shape=(s, s))
+        for i in range(s):
+            for j in range(s):
+                if [i, j] in self.obstacle_loc:  # self.obstacle_loc is a list
+                    Rmat[i, j] = -101
+                elif [i, j] == self.destination:
+                    Rmat[i, j] = 99
+                else:
+                    Rmat[i, j] = -1
+        self._Rmat = Rmat
 
-
-
-    def _map_grid(self):
-        grid_list = []
+    def _make_Rtensor(self):
+        s = self.s
+        Rtensor = np.zeros(shape=(s, s, 4, 4))
+        for i in range(s):
+            i_slice = self._next_state_ltensor[i]   # TODO: Need to clearify 'self._next_state_ltensor'
+            for j in range(s):
+                j_tuple = i_slice[j]
+                for ii in range(4):
+                    for jj in range(4):
+                        index = j_tuple[ii][jj]
+                        Rtensor[i, j, ii, jj] = self._Rmat[index[0], index[1]]
+        self._Rtensor = Rtensor
 
     def mdp_solve(self):
         pass
