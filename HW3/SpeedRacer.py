@@ -71,50 +71,75 @@ class SpeedRacer(object):
             act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [1, 0], 'W': [-1, 0]}
         return act_dict
 
-    def idx_trans(self, index, action):
+    def _make_state_move_tensor(self):
+        actions = ['N', 'S', 'E', 'W']
+        self.next_state_tensor = []
+        self.move_tensor = []
+        s = self.s
+        for i in range(s):
+            move_i_row = []
+            state_i_row = []
+            for j in range(s):
+                move_j_column = []
+                state_j_column = []
+                for a in range(4):
+                    action = actions[a]
+                    ans = self._idx_trans([i, j], action)
+                    move_j_column.append(ans['move'])
+                    state_j_column.append(ans['index'])
+                move_i_row.append(move_j_column)
+                state_i_row.append(state_j_column)
+            self.next_state_tensor.append(state_i_row)
+            self.move_tensor.append(move_i_row)
+
+    def _idx_trans(self, index, action):
         """
-        Return index list [(x1,y1), (x2,y2), (x3,y3), (x4,y4)] and moving []
-        after action applied on original index.
+        Return index list [[x1,y1], [x2,y2], [x3,y3], [x4,y4]] after action applied on original index,
+        and movement [[delta_x1,delta_y1], [delta_x2,delta_y2], [delta_x3,delta_y3], [delta_x4,delta_y4]]
+
 
         If action='N',
-        (x1,y1) is the index after moving toward North with probability 0.7, (prob <= 0.7)
-        (x2,y2) is the index after moving toward East with probability 0.1, (0.7 < prob <= 0.8)
-        (x3,y3) is the index after moving toward West with probability 0.1, (0.8 < prob <= 0.9)
-        (x4,y4) is the index after moving toward South with probability 0.1; (0.9 < prob <= 1.0)
+        [x1,y1] is the index after moving toward North with probability 0.7, (prob <= 0.7)
+        [x2,y2] is the index after moving toward West with probability 0.1, (0.7 < prob <= 0.8)
+        [x3,y3] is the index after moving toward East with probability 0.1, (0.8 < prob <= 0.9)
+        [x4,y4] is the index after moving toward South with probability 0.1; (0.9 < prob <= 1.0)
 
         If action='S',
-        (x1,y1) is the index after moving toward South with probability 0.7, (prob <= 0.7)
-        (x2,y2) is the index after moving toward West with probability 0.1, (0.7 < prob <= 0.8)
-        (x3,y3) is the index after moving toward East with probability 0.1, (0.8 < prob <= 0.9)
-        (x4,y4) is the index after moving toward North with probability 0.1; (0.9 < prob <= 1.0)
+        [x1,y1] is the index after moving toward South with probability 0.7, (prob <= 0.7)
+        [x2,y2] is the index after moving toward East with probability 0.1, (0.7 < prob <= 0.8)
+        [x3,y3] is the index after moving toward West with probability 0.1, (0.8 < prob <= 0.9)
+        [x4,y4] is the index after moving toward North with probability 0.1; (0.9 < prob <= 1.0)
 
         If action='E',
-        (x1,y1) is the index after moving toward East with probability 0.7, (prob <= 0.7)
-        (x2,y2) is the index after moving toward South with probability 0.1, (0.7 < prob <= 0.8)
-        (x3,y3) is the index after moving toward North with probability 0.1, (0.8 < prob <= 0.9)
-        (x4,y4) is the index after moving toward West with probability 0.1; (0.9 < prob <= 1.0)
+        [x1,y1] is the index after moving toward East with probability 0.7, (prob <= 0.7)
+        [x2,y2] is the index after moving toward North with probability 0.1, (0.7 < prob <= 0.8)
+        [x3,y3] is the index after moving toward South with probability 0.1, (0.8 < prob <= 0.9)
+        [x4,y4] is the index after moving toward West with probability 0.1; (0.9 < prob <= 1.0)
 
         If action='W',
-        (x1,y1) is the index after moving toward West with probability 0.7, (prob <= 0.7)
-        (x2,y2) is the index after moving toward North with probability 0.1, (0.7 < prob <= 0.8)
-        (x3,y3) is the index after moving toward South with probability 0.1, (0.8 < prob <= 0.9)
-        (x4,y4) is the index after moving toward East with probability 0.1; (0.9 < prob <= 1.0)
+        [x1,y1] is the index after moving toward West with probability 0.7, (prob <= 0.7)
+        [x2,y2] is the index after moving toward South with probability 0.1, (0.7 < prob <= 0.8)
+        [x3,y3] is the index after moving toward North with probability 0.1, (0.8 < prob <= 0.9)
+        [x4,y4] is the index after moving toward East with probability 0.1; (0.9 < prob <= 1.0)
         """
-        act_dict = self._get_action_dict(index)
-
-    # TODO: speed
-    def trans_numpy(self, index, action):
-        act_dict = self._get_action_dict(index)
-        act_order = self._get_action_order(action)
-        move = np.array([act_dict[d] for d in act_order], dtype=int)
-        return {'move': move, 'index': index.astype(int) + move}
-
-    # TODO: speed
-    def trans_list(self, index, action):
         act_dict = self._get_action_dict(index)
         act_order = self._get_action_order(action)
         return {'index': [[index[i] + act_dict[d][i] for i in range(2)] for d in act_order],
                 'move': [act_dict[d] for d in act_order]}
+
+    # # TODO: speed
+    # def trans_numpy(self, index, action):
+    #     act_dict = self._get_action_dict(index)
+    #     act_order = self._get_action_order(action)
+    #     move = np.array([act_dict[d] for d in act_order], dtype=int)
+    #     return {'move': move, 'index': index.astype(int) + move}
+
+    # # TODO: speed
+    # def trans_list(self, index, action):
+    #     act_dict = self._get_action_dict(index)
+    #     act_order = self._get_action_order(action)
+    #     return {'index': [[index[i] + act_dict[d][i] for i in range(2)] for d in act_order],
+    #             'move': [act_dict[d] for d in act_order]}
 
     # def _map_grid(self):
     #     grid_list = []
@@ -136,7 +161,7 @@ class SpeedRacer(object):
         s = self.s
         Rtensor = np.zeros(shape=(s, s, 4, 4))
         for i in range(s):
-            i_slice = self._next_state_ltensor[i]   # TODO: Need to clearify 'self._next_state_ltensor'
+            i_slice = self._next_state_ltensor[i]  # TODO: Need to clearify 'self._next_state_ltensor'
             for j in range(s):
                 j_tuple = i_slice[j]
                 for ii in range(4):
@@ -151,6 +176,9 @@ class SpeedRacer(object):
 
 def problem_generator(in_path):
     line_ct = 0
+    obstacle_loc = []
+    start_loc = []
+    end_loc = []
     for line in open(in_path, 'r'):
         line_ct += 1
         if line_ct == 1:
@@ -159,9 +187,13 @@ def problem_generator(in_path):
             n = int(line.strip())  # number of cars
         elif line_ct == 3:
             o = int(line.strip())  # number of obstacles
-            break
-    location = np.loadtxt(in_path, np.int, delimiter=',', skiprows=3)
-    obstacle_loc = location[:o, :]  # the location of obstacles
-    start_loc = location[o:o + n, :]
-    end_loc = location[o + n:, :]
+        elif line_ct < o + 3:
+            tmp = line.strip().split(',')
+            obstacle_loc.append([int(tmp[0]), int(tmp[1])])
+        elif line_ct < 3 + o + n:
+            tmp = line.strip().split(',')
+            start_loc.append([int(tmp[0]), int(tmp[1])])
+        else:
+            tmp = line.strip().split(',')
+            end_loc.append([int(tmp[0]), int(tmp[1])])
     return SpeedRacer(s, n, o, obstacle_loc, start_loc, end_loc)
