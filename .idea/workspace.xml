@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/HW3/SpeedRacer.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/SpeedRacer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/ex.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/ex.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,8 +57,8 @@
       <file leaf-file-name="SpeedRacer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
+            <state relative-caret-position="203">
+              <caret line="77" column="18" lean-forward="true" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
               <folding>
                 <element signature="e#181#218#0" expanded="true" />
               </folding>
@@ -369,7 +366,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="566" y="22" width="714" height="778" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" order="3" weight="0.29483038" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -670,8 +666,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="81" column="30" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
+        <state relative-caret-position="203">
+          <caret line="77" column="18" lean-forward="true" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
           </folding>
