@@ -73,8 +73,8 @@ class SpeedRacer(object):
 
     def _make_state_move_tensor(self):
         actions = ['N', 'S', 'E', 'W']
-        self.next_state_tensor = []
-        self.move_tensor = []
+        self.next_state_ltensor = []
+        self.move_ltensor = []
         s = self.s
         for i in range(s):
             move_i_row = []
@@ -89,8 +89,8 @@ class SpeedRacer(object):
                     state_j_column.append(ans['index'])
                 move_i_row.append(move_j_column)
                 state_i_row.append(state_j_column)
-            self.next_state_tensor.append(state_i_row)
-            self.move_tensor.append(move_i_row)
+            self.next_state_ltensor.append(state_i_row)
+            self.move_ltensor.append(move_i_row)
 
     def _idx_trans(self, index, action):
         """
@@ -161,20 +161,21 @@ class SpeedRacer(object):
         s = self.s
         Rtensor = np.zeros(shape=(s, s, 4, 4))
         for i in range(s):
-            i_slice = self._next_state_ltensor[i]  # TODO: Need to clearify 'self._next_state_ltensor'
+            i_slice = self.next_state_ltensor[i]  # TODO: Need to clearify 'self._next_state_ltensor'
             for j in range(s):
                 j_tuple = i_slice[j]
                 for ii in range(4):
                     for jj in range(4):
                         index = j_tuple[ii][jj]
                         Rtensor[i, j, ii, jj] = self._Rmat[index[0], index[1]]
-        self._Rtensor = Rtensor
+        self.Rtensor = Rtensor
 
     def mdp_solve(self):
         pass
 
 
 def problem_generator(in_path):
+    # using list is 3-4 times faster than using Numpy.load()
     line_ct = 0
     obstacle_loc = []
     start_loc = []
