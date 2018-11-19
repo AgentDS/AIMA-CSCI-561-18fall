@@ -21,12 +21,12 @@ class SpeedRacer(object):
         self.start_loc = start_loc
         self.end_loc = end_loc
 
-    def set_parameter(self, gamma=0.9, epsilon=0.1):
+    def set_update_param(self, gamma=0.9, epsilon=0.1):
         self.gamma = gamma
         self.epsilon = epsilon
         self.threshold = epsilon * (1 - gamma) / gamma
 
-    def set_reward(self, Rcrash=-100, Rgas=-1, Rdestination=100):
+    def set_reward_param(self, Rcrash=-100, Rgas=-1, Rdestination=100):
         self.Rcrash = Rcrash
         self.Rgas = Rgas
         self.Rdestination = Rdestination
@@ -76,27 +76,6 @@ class SpeedRacer(object):
             act_dict = {'N': [0, -1], 'S': [0, 1], 'E': [1, 0], 'W': [-1, 0]}
         return act_dict
 
-    def _make_state_move_tensor(self):
-        actions = ['N', 'S', 'E', 'W']
-        self.next_state_ltensor = []
-        self.move_ltensor = []
-        s = self.s
-        for i in range(s):
-            move_i_row = []
-            state_i_row = []
-            for j in range(s):
-                move_j_column = []
-                state_j_column = []
-                for a in range(4):
-                    action = actions[a]
-                    ans = self._idx_trans([i, j], action)
-                    move_j_column.append(ans['move'])
-                    state_j_column.append(ans['index'])
-                move_i_row.append(move_j_column)
-                state_i_row.append(state_j_column)
-            self.next_state_ltensor.append(state_i_row)
-            self.move_ltensor.append(move_i_row)
-
     def _idx_trans(self, index, action):
         """
         Return index list [[x1,y1], [x2,y2], [x3,y3], [x4,y4]] after action applied on original index,
@@ -132,10 +111,36 @@ class SpeedRacer(object):
         return {'index': [[index[i] + act_dict[d][i] for i in range(2)] for d in act_order],
                 'move': [act_dict[d] for d in act_order]}
 
-    # def _map_grid(self):
-    #     grid_list = []
+    def _make_state_move_tensor(self):
+        """
+        make lists for movement and next state index for any possible actions,
+        can be used for all cars.
+        """
+        actions = ['N', 'S', 'E', 'W']
+        self.next_state_ltensor = []
+        self.move_ltensor = []
+        s = self.s
+        for i in range(s):
+            move_i_row = []
+            state_i_row = []
+            for j in range(s):
+                move_j_column = []
+                state_j_column = []
+                for a in range(4):
+                    action = actions[a]
+                    ans = self._idx_trans([i, j], action)
+                    move_j_column.append(ans['move'])
+                    state_j_column.append(ans['index'])
+                move_i_row.append(move_j_column)
+                state_i_row.append(state_j_column)
+            self.next_state_ltensor.append(state_i_row)
+            self.move_ltensor.append(move_i_row)
 
     def _set_Rmat(self, destination):
+        """
+        set Rmat for only one car with destination location.
+        destination = [dx,dy]
+        """
         s = self.s
         Rmat = np.zeros(shape=(s, s))
         for i in range(s):
@@ -146,7 +151,7 @@ class SpeedRacer(object):
                     Rmat[i, j] = self.Rdestination + self.Rgas
                 else:
                     Rmat[i, j] = self.Rgas
-        self._Rmat = Rmat
+        self.Rmat = Rmat
 
     # def _set_Rtensor(self):
     #     s = self.s
@@ -162,6 +167,7 @@ class SpeedRacer(object):
     #     self.Rtensor = Rtensor
 
     def _map_Utensor(self, destination):
+        # map self.Umat to Utensor for update of the next generation
         s = self.s
         self.Utensor = np.zeros(shape=(s, s, 4, 4))
         for i in range(s):
@@ -195,7 +201,15 @@ class SpeedRacer(object):
             [[0.7, 0.1, 0.1, 0.1], [0.7, 0.1, 0.1, 0.1], [0.7, 0.1, 0.1, 0.1], [0.7, 0.1, 0.1, 0.1]])
 
     def mdp_solve(self):
-        pass
+        self.set_update_param()
+        self.set_reward_param()
+        self._make_state_move_tensor()
+        for i in range(self.n):
+            self.value_iteration_one_car(start=self.start_loc[i], destination=self.end_loc[i])
+
+    def value_iteration_one_car(self, start, destination):
+        self._set_Rmat(destination)
+        self._set_Ptensor(destination)
 
 
 def problem_generator(in_path):
