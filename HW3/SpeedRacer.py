@@ -136,9 +136,9 @@ class SpeedRacer(object):
             self.next_state_ltensor.append(state_i_row)
             self.move_ltensor.append(move_i_row)
 
-    def _set_Rmat(self, destination):
+    def _init_Rmat(self, destination):
         """
-        set Rmat for only one car with destination location.
+        Initialize Rmat for only one car with destination location.
         destination = [dx,dy]
         """
         s = self.s
@@ -166,8 +166,17 @@ class SpeedRacer(object):
     #                     Rtensor[i, j, ii, jj] = self._Rmat[index[0], index[1]]
     #     self.Rtensor = Rtensor
 
+    def _init_Umat(self):
+        """
+        Initialize Umat to all-zero matrix before the value iteration algorithm.
+        """
+        s = self.s
+        self.Umat = np.zeros(shape=(s, s))
+
     def _map_Utensor(self, destination):
-        # map self.Umat to Utensor for update of the next generation
+        """
+        map Umat to Utensor for update of the next generation
+        """
         s = self.s
         self.Utensor = np.zeros(shape=(s, s, 4, 4))
         for i in range(s):
@@ -190,7 +199,11 @@ class SpeedRacer(object):
         else:
             return True  # already convergent
 
-    def _set_Ptensor(self, destination):
+    def _init_Ptensor(self, destination):
+        """
+        Initialize Ptensor with [0.7, 0.1, 0.1, 0.1] for each action,
+        except the destination location with [1, 1, 1, 1].
+        """
         s = self.s
         self.Ptensor = np.ones(shape=(s, s, 4, 4), dtype=float)
         self.Ptensor[:, :, :, 0] *= 0.7
@@ -208,8 +221,10 @@ class SpeedRacer(object):
             self.value_iteration_one_car(start=self.start_loc[i], destination=self.end_loc[i])
 
     def value_iteration_one_car(self, start, destination):
-        self._set_Rmat(destination)
-        self._set_Ptensor(destination)
+        self._init_Rmat(destination)
+        self._init_Ptensor(destination)
+        while True:
+            self._map_Utensor(destination)
 
 
 def problem_generator(in_path):

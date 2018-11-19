@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HW3/SpeedRacer.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/SpeedRacer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,8 +60,8 @@
       <file leaf-file-name="SpeedRacer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="207" column="78" selection-start-line="207" selection-start-column="78" selection-end-line="207" selection-end-column="78" />
+            <state relative-caret-position="430">
+              <caret line="223" column="36" selection-start-line="223" selection-start-column="36" selection-end-line="223" selection-end-column="36" />
               <folding>
                 <element signature="e#181#218#0" expanded="true" />
                 <element signature="e#412#567#0" />
@@ -73,9 +74,9 @@
                 <element signature="e#3065#3928#0" />
                 <element signature="e#6156#6596#0" />
                 <element signature="e#6904#6929#0" />
-                <element signature="e#7003#7474#0" />
+                <element signature="e#7247#7300#0" />
                 <element signature="e#8195#8475#0" />
-                <element signature="e#7422#7755#0" />
+                <element signature="e#8379#8740#0" />
               </folding>
             </state>
           </provider>
@@ -532,9 +533,9 @@
             <element signature="e#3065#3928#0" />
             <element signature="e#6156#6596#0" />
             <element signature="e#6904#6929#0" />
-            <element signature="e#7003#7474#0" />
+            <element signature="e#7247#7300#0" />
             <element signature="e#8195#8475#0" />
-            <element signature="e#7422#7755#0" />
+            <element signature="e#8379#8740#0" />
           </folding>
         </state>
       </provider>
@@ -575,9 +576,9 @@
             <element signature="e#3065#3928#0" />
             <element signature="e#6156#6596#0" />
             <element signature="e#6904#6929#0" />
-            <element signature="e#7003#7474#0" />
+            <element signature="e#7247#7300#0" />
             <element signature="e#8195#8475#0" />
-            <element signature="e#7422#7755#0" />
+            <element signature="e#8379#8740#0" />
           </folding>
         </state>
       </provider>
@@ -618,9 +619,9 @@
             <element signature="e#3065#3928#0" />
             <element signature="e#6156#6596#0" />
             <element signature="e#6904#6929#0" />
-            <element signature="e#7003#7474#0" />
+            <element signature="e#7247#7300#0" />
             <element signature="e#8195#8475#0" />
-            <element signature="e#7422#7755#0" />
+            <element signature="e#8379#8740#0" />
           </folding>
         </state>
       </provider>
@@ -661,9 +662,9 @@
             <element signature="e#3065#3928#0" />
             <element signature="e#6156#6596#0" />
             <element signature="e#6904#6929#0" />
-            <element signature="e#7003#7474#0" />
+            <element signature="e#7247#7300#0" />
             <element signature="e#8195#8475#0" />
-            <element signature="e#7422#7755#0" />
+            <element signature="e#8379#8740#0" />
           </folding>
         </state>
       </provider>
@@ -704,9 +705,9 @@
             <element signature="e#3065#3928#0" />
             <element signature="e#6156#6596#0" />
             <element signature="e#6904#6929#0" />
-            <element signature="e#7003#7474#0" />
+            <element signature="e#7247#7300#0" />
             <element signature="e#8195#8475#0" />
-            <element signature="e#7422#7755#0" />
+            <element signature="e#8379#8740#0" />
           </folding>
         </state>
       </provider>
@@ -747,9 +748,9 @@
             <element signature="e#3065#3928#0" />
             <element signature="e#6156#6596#0" />
             <element signature="e#6904#6929#0" />
-            <element signature="e#7003#7474#0" />
+            <element signature="e#7247#7300#0" />
             <element signature="e#8195#8475#0" />
-            <element signature="e#7422#7755#0" />
+            <element signature="e#8379#8740#0" />
           </folding>
         </state>
       </provider>
@@ -820,8 +821,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="207" column="78" selection-start-line="207" selection-start-column="78" selection-end-line="207" selection-end-column="78" />
+        <state relative-caret-position="430">
+          <caret line="223" column="36" selection-start-line="223" selection-start-column="36" selection-end-line="223" selection-end-column="36" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
             <element signature="e#412#567#0" />
@@ -834,9 +835,9 @@
             <element signature="e#3065#3928#0" />
             <element signature="e#6156#6596#0" />
             <element signature="e#6904#6929#0" />
-            <element signature="e#7003#7474#0" />
+            <element signature="e#7247#7300#0" />
             <element signature="e#8195#8475#0" />
-            <element signature="e#7422#7755#0" />
+            <element signature="e#8379#8740#0" />
           </folding>
         </state>
       </provider>
