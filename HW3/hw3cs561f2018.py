@@ -7,10 +7,12 @@
 # @Software: PyCharm
 from __future__ import print_function
 import SpeedRacer as sr
+import numpy as np
+from time import time
+
 
 if __name__ == '__main__':
-    prob0 = sr.problem_generator('input0.txt')
-    prob1 = sr.problem_generator('input1.txt')
-    prob2 = sr.problem_generator('input2.txt')
-
-
+    # prob0 = sr.problem_generator('input0.txt')
+    # prob1 = sr.problem_generator('input1.txt')
+    # prob2 = sr.problem_generator('input2.txt')
+    pass

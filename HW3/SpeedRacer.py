@@ -21,6 +21,7 @@ class SpeedRacer(object):
         self.start_loc = start_loc
         self.end_loc = end_loc
         self.Rmat = []
+        self.iter_ct = []
 
     def set_update_param(self, gamma=0.9, epsilon=0.1):
         self.gamma = gamma
@@ -143,7 +144,7 @@ class SpeedRacer(object):
         destination = [dx,dy]
         """
         s = self.s
-        Rmat = np.zeros(shape=(s, s))
+        Rmat = np.zeros(shape=(s, s), dtype=np.float32)
         for i in range(s):
             for j in range(s):
                 if [i, j] in self.obstacle_loc:  # self.obstacle_loc is a list
@@ -152,7 +153,7 @@ class SpeedRacer(object):
                     Rmat[i, j] = self.Rdestination + self.Rgas
                 else:
                     Rmat[i, j] = self.Rgas
-        self.Rmat = Rmat
+        self.Rmat = Rmat.astype(np.float32)
 
     # def _set_Rtensor(self):
     #     s = self.s
@@ -172,14 +173,14 @@ class SpeedRacer(object):
         Initialize Umat to all-zero matrix.
         """
         s = self.s
-        self.Umat = [np.zeros(shape=(s, s)) for i in range(self.n)]
+        self.Umat = [np.zeros(shape=(s, s), dtype=np.float32) for i in range(self.n)]
 
     def _map_Utensor(self, car_id):
         """
         map Umat to Utensor for update of the next generation
         """
         s = self.s
-        self.Utensor = np.zeros(shape=(s, s, 4, 4))
+        self.Utensor = np.zeros(shape=(s, s, 4, 4), dtype=np.float32)
         for i in range(s):
             i_slice = self.next_state_ltensor[i]
             for j in range(s):
@@ -193,8 +194,8 @@ class SpeedRacer(object):
     def _Umat_convergence(self, car_id, Umat):
         s = self.s
         assert Umat.shape == (s, s)
-        delta_Umat = np.abs(Umat - self.Umat[car_id])
-        max_delta_U = np.max(delta_Umat)
+        delta_Umat = np.abs(Umat - self.Umat[car_id], dtype=np.float32)
+        max_delta_U = np.max(delta_Umat, dtype=np.float32)
         if max_delta_U > self.threshold:
             return False  # not convergent yet
         else:
@@ -206,7 +207,7 @@ class SpeedRacer(object):
         except the destination location with [1, 1, 1, 1].
         """
         s = self.s
-        self.Ptensor = np.ones(shape=(s, s, 4, 4), dtype=float)
+        self.Ptensor = np.ones(shape=(s, s, 4, 4), dtype=np.float32)
         self.Ptensor[:, :, :, 0] *= 0.7
         self.Ptensor[:, :, :, 1:] *= 0.1
         dx = destination[0]
@@ -225,18 +226,21 @@ class SpeedRacer(object):
         s = self.s
         self._init_Rmat(destination)
         self._init_Ptensor(destination)
-        Umat_tmp = np.zeros(shape=(s, s))
-        Utmp = np.zeros(shape=(s, s, 4))
+        Umat_tmp = np.zeros(shape=(s, s), dtype=np.float32)
+        Utmp = np.zeros(shape=(s, s, 4), dtype=np.float32)
 
         iter_ct = 0
         while True:
             iter_ct += 1
             self._map_Utensor(car_id)
-            np.sum(self.Utensor * self.Ptensor, axis=3, out=Utmp)
-            np.max(Utmp, axis=2, out=Umat_tmp)
-            np.add(Umat_tmp, self.Rmat, out=Umat_tmp)
+            Utmp = np.sum(self.Utensor * self.Ptensor, axis=3)
+            Umat_tmp = np.max(Utmp, axis=2) + self.Rmat
+            # np.sum(self.Utensor * self.Ptensor, axis=3, out=Utmp, dtype=np.float32)
+            # np.max(Utmp, axis=2, out=Umat_tmp)
+            # np.add(Umat_tmp, self.Rmat, out=Umat_tmp, dtype=np.float32)
             self.Umat[car_id] = Umat_tmp.copy()
             if self._Umat_convergence(car_id, Umat_tmp):
+                self.iter_ct.append(iter_ct)
                 break
 
 
