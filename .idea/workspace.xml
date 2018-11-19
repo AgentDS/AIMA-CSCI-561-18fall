@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/HW3/testtime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HW3/SpeedRacer.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/SpeedRacer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HW3/ex.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/ex.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HW3/hw3cs561f2018.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/hw3cs561f2018.py" afterDir="false" />
@@ -30,7 +28,7 @@
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_pilot_scooter_test_PilotScooterTestCase_test_input2.coverage" NAME="Unittests for pilot_scooter_test.PilotScooterTestCase.test_input2 Coverage Results" MODIFIED="1536827377660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$testtime.coverage" NAME="testtime Coverage Results" MODIFIED="1542622926998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$pilot_scooter.coverage" NAME="pilot_scooter Coverage Results" MODIFIED="1536883417245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1b" />
-    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw3cs561f2018.coverage" NAME="hw3cs561f2018 Coverage Results" MODIFIED="1542621818999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
+    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw3cs561f2018.coverage" NAME="hw3cs561f2018 Coverage Results" MODIFIED="1542634563043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_simple_reflex_agent_test_MyTestCase.coverage" NAME="Unittests for simple_reflex_agent_test.MyTestCase Coverage Results" MODIFIED="1535828611911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
   <component name="DatabaseView">
@@ -52,8 +50,8 @@
       <file leaf-file-name="mdp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HW3/mdp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+            <state relative-caret-position="195">
+              <caret line="222" column="8" selection-start-line="222" selection-start-column="4" selection-end-line="222" selection-end-column="8" />
               <folding>
                 <element signature="e#535#608#0" expanded="true" />
               </folding>
@@ -61,31 +59,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpeedRacer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SpeedRacer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="237" column="51" selection-start-line="237" selection-start-column="51" selection-end-line="237" selection-end-column="51" />
+            <state relative-caret-position="275">
+              <caret line="310" column="15" selection-start-line="310" selection-start-column="15" selection-end-line="310" selection-end-column="15" />
               <folding>
                 <element signature="e#181#218#0" expanded="true" />
+                <element signature="e#347#1215#0" />
+                <element signature="e#412#617#0" />
+                <element signature="e#702#804#0" />
+                <element signature="e#819#905#0" />
                 <element signature="e#726#754#0" />
                 <element signature="e#1196#1508#0" />
-                <element signature="e#1557#2840#0" />
-                <element signature="e#3076#5167#0" />
                 <element signature="e#3065#3928#0" />
+                <element signature="e#6202#6806#0" />
                 <element signature="e#6904#6929#0" />
+                <element signature="e#7276#7497#0" />
                 <element signature="e#7448#7989#0" />
+                <element signature="e#8195#8475#0" />
                 <element signature="e#8379#8740#0" />
+                <element signature="e#9118#9370#0" />
+                <element signature="e#10348#10997#0" />
+                <element signature="e#11028#11118#0" />
+                <element signature="e#11175#11367#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hw3cs561f2018.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="hw3cs561f2018.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="277">
+              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
               <folding>
                 <element signature="e#183#220#0" expanded="true" />
               </folding>
@@ -110,6 +117,8 @@
       <find>las</find>
       <find>copy</find>
       <find>_choose</find>
+      <find>best</find>
+      <find>max</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,9 +161,9 @@
         <option value="$PROJECT_DIR$/HW2/case_time.py" />
         <option value="$PROJECT_DIR$/HW3/mdp.py" />
         <option value="$PROJECT_DIR$/HW3/__init__.py" />
-        <option value="$PROJECT_DIR$/HW3/hw3cs561f2018.py" />
         <option value="$PROJECT_DIR$/HW3/testtime.py" />
         <option value="$PROJECT_DIR$/HW3/SpeedRacer.py" />
+        <option value="$PROJECT_DIR$/HW3/hw3cs561f2018.py" />
       </list>
     </option>
   </component>
@@ -218,7 +227,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.testtime">
+  <component name="RunManager" selected="Python.hw3cs561f2018">
     <configuration name="case_time" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AIMA-CSCI-561-18fall" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -323,8 +332,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.testtime" />
         <item itemvalue="Python.hw3cs561f2018" />
+        <item itemvalue="Python.testtime" />
         <item itemvalue="Python.case_time" />
         <item itemvalue="Python.test_bench" />
         <item itemvalue="Python.hw2cs561f2018" />
@@ -394,7 +403,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3613793" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.47310343" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.16551724" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17285945" />
       <window_info anchor="right" id="R Packages" order="6" />
@@ -404,7 +413,7 @@
       <window_info anchor="right" id="SciView" order="3" weight="0.32956383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.49779737" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.49103448" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -449,11 +458,56 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="35" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="41" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>p0.Umat[4][7,0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>p0.Umat[3][2,7]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>p0.Umat[2][9,0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>p0.Umat[1][9,0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>p0.Umat[1][4,1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>p0.Umat[0][7,1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>p0.Utensor[0][7,1]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>self._LAHSA_no_more_check()</expression-string>
         <language-id>Python</language-id>
@@ -466,36 +520,6 @@
       </expression>
       <expression>
         <expression-string>self._get_app_info(self._LAHSA_current_list + self.LAHSA_id)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>id</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self._SPLA_no_more_check()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>[self._SPLA_candidates[i] for i in range(self._SPLA_candidates_cnt) if self._SPLA_tmp[i]==False]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>[self._SPLA_candidates[i] if self._SPLA_tmp[i]==False for i in range(self._SPLA_candidates_cnt)]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self._SPLA_current_list</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>self._LAHSA_current_list</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -528,14 +552,23 @@
           <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+            <element signature="e#347#1215#0" />
+            <element signature="e#412#617#0" />
+            <element signature="e#702#804#0" />
+            <element signature="e#819#905#0" />
             <element signature="e#726#754#0" />
             <element signature="e#1196#1508#0" />
-            <element signature="e#1557#2840#0" />
-            <element signature="e#3076#5167#0" />
             <element signature="e#3065#3928#0" />
+            <element signature="e#6202#6806#0" />
             <element signature="e#6904#6929#0" />
+            <element signature="e#7276#7497#0" />
             <element signature="e#7448#7989#0" />
+            <element signature="e#8195#8475#0" />
             <element signature="e#8379#8740#0" />
+            <element signature="e#9118#9370#0" />
+            <element signature="e#10348#10997#0" />
+            <element signature="e#11028#11118#0" />
+            <element signature="e#11175#11367#0" />
           </folding>
         </state>
       </provider>
@@ -566,14 +599,23 @@
           <caret line="77" column="18" lean-forward="true" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+            <element signature="e#347#1215#0" />
+            <element signature="e#412#617#0" />
+            <element signature="e#702#804#0" />
+            <element signature="e#819#905#0" />
             <element signature="e#726#754#0" />
             <element signature="e#1196#1508#0" />
-            <element signature="e#1557#2840#0" />
-            <element signature="e#3076#5167#0" />
             <element signature="e#3065#3928#0" />
+            <element signature="e#6202#6806#0" />
             <element signature="e#6904#6929#0" />
+            <element signature="e#7276#7497#0" />
             <element signature="e#7448#7989#0" />
+            <element signature="e#8195#8475#0" />
             <element signature="e#8379#8740#0" />
+            <element signature="e#9118#9370#0" />
+            <element signature="e#10348#10997#0" />
+            <element signature="e#11028#11118#0" />
+            <element signature="e#11175#11367#0" />
           </folding>
         </state>
       </provider>
@@ -604,14 +646,23 @@
           <caret line="119" column="24" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+            <element signature="e#347#1215#0" />
+            <element signature="e#412#617#0" />
+            <element signature="e#702#804#0" />
+            <element signature="e#819#905#0" />
             <element signature="e#726#754#0" />
             <element signature="e#1196#1508#0" />
-            <element signature="e#1557#2840#0" />
-            <element signature="e#3076#5167#0" />
             <element signature="e#3065#3928#0" />
+            <element signature="e#6202#6806#0" />
             <element signature="e#6904#6929#0" />
+            <element signature="e#7276#7497#0" />
             <element signature="e#7448#7989#0" />
+            <element signature="e#8195#8475#0" />
             <element signature="e#8379#8740#0" />
+            <element signature="e#9118#9370#0" />
+            <element signature="e#10348#10997#0" />
+            <element signature="e#11028#11118#0" />
+            <element signature="e#11175#11367#0" />
           </folding>
         </state>
       </provider>
@@ -642,14 +693,23 @@
           <caret line="188" selection-start-line="188" selection-end-line="188" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+            <element signature="e#347#1215#0" />
+            <element signature="e#412#617#0" />
+            <element signature="e#702#804#0" />
+            <element signature="e#819#905#0" />
             <element signature="e#726#754#0" />
             <element signature="e#1196#1508#0" />
-            <element signature="e#1557#2840#0" />
-            <element signature="e#3076#5167#0" />
             <element signature="e#3065#3928#0" />
+            <element signature="e#6202#6806#0" />
             <element signature="e#6904#6929#0" />
+            <element signature="e#7276#7497#0" />
             <element signature="e#7448#7989#0" />
+            <element signature="e#8195#8475#0" />
             <element signature="e#8379#8740#0" />
+            <element signature="e#9118#9370#0" />
+            <element signature="e#10348#10997#0" />
+            <element signature="e#11028#11118#0" />
+            <element signature="e#11175#11367#0" />
           </folding>
         </state>
       </provider>
@@ -680,14 +740,23 @@
           <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+            <element signature="e#347#1215#0" />
+            <element signature="e#412#617#0" />
+            <element signature="e#702#804#0" />
+            <element signature="e#819#905#0" />
             <element signature="e#726#754#0" />
             <element signature="e#1196#1508#0" />
-            <element signature="e#1557#2840#0" />
-            <element signature="e#3076#5167#0" />
             <element signature="e#3065#3928#0" />
+            <element signature="e#6202#6806#0" />
             <element signature="e#6904#6929#0" />
+            <element signature="e#7276#7497#0" />
             <element signature="e#7448#7989#0" />
+            <element signature="e#8195#8475#0" />
             <element signature="e#8379#8740#0" />
+            <element signature="e#9118#9370#0" />
+            <element signature="e#10348#10997#0" />
+            <element signature="e#11028#11118#0" />
+            <element signature="e#11175#11367#0" />
           </folding>
         </state>
       </provider>
@@ -718,14 +787,23 @@
           <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+            <element signature="e#347#1215#0" />
+            <element signature="e#412#617#0" />
+            <element signature="e#702#804#0" />
+            <element signature="e#819#905#0" />
             <element signature="e#726#754#0" />
             <element signature="e#1196#1508#0" />
-            <element signature="e#1557#2840#0" />
-            <element signature="e#3076#5167#0" />
             <element signature="e#3065#3928#0" />
+            <element signature="e#6202#6806#0" />
             <element signature="e#6904#6929#0" />
+            <element signature="e#7276#7497#0" />
             <element signature="e#7448#7989#0" />
+            <element signature="e#8195#8475#0" />
             <element signature="e#8379#8740#0" />
+            <element signature="e#9118#9370#0" />
+            <element signature="e#10348#10997#0" />
+            <element signature="e#11028#11118#0" />
+            <element signature="e#11175#11367#0" />
           </folding>
         </state>
       </provider>
@@ -761,16 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW3/mdp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
-          <folding>
-            <element signature="e#535#608#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW3/input2.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -784,16 +852,6 @@
         <state relative-caret-position="-3680" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW3/testtime.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="538">
@@ -804,20 +862,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/input1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/mdp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="222" column="8" selection-start-line="222" selection-start-column="4" selection-end-line="222" selection-end-column="8" />
+          <folding>
+            <element signature="e#535#608#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="237" column="51" selection-start-line="237" selection-start-column="51" selection-end-line="237" selection-end-column="51" />
+        <state relative-caret-position="275">
+          <caret line="310" column="15" selection-start-line="310" selection-start-column="15" selection-end-line="310" selection-end-column="15" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
+            <element signature="e#347#1215#0" />
+            <element signature="e#412#617#0" />
+            <element signature="e#702#804#0" />
+            <element signature="e#819#905#0" />
             <element signature="e#726#754#0" />
             <element signature="e#1196#1508#0" />
-            <element signature="e#1557#2840#0" />
-            <element signature="e#3076#5167#0" />
             <element signature="e#3065#3928#0" />
+            <element signature="e#6202#6806#0" />
             <element signature="e#6904#6929#0" />
+            <element signature="e#7276#7497#0" />
             <element signature="e#7448#7989#0" />
+            <element signature="e#8195#8475#0" />
             <element signature="e#8379#8740#0" />
+            <element signature="e#9118#9370#0" />
+            <element signature="e#10348#10997#0" />
+            <element signature="e#11028#11118#0" />
+            <element signature="e#11175#11367#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding>
+            <element signature="e#183#220#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -12,6 +12,32 @@ import numpy as np
 from itertools import combinations, permutations
 
 
+def problem_generator(in_path):
+    # using list is 3-4 times faster than using Numpy.load()
+    line_ct = 0
+    obstacle_loc = []
+    start_loc = []
+    end_loc = []
+    for line in open(in_path, 'r'):
+        line_ct += 1
+        if line_ct == 1:
+            s = int(line.strip())  # size of grid
+        elif line_ct == 2:
+            n = int(line.strip())  # number of cars
+        elif line_ct == 3:
+            o = int(line.strip())  # number of obstacles
+        elif line_ct <= o + 3:
+            tmp = line.strip().split(',')
+            obstacle_loc.append([int(tmp[0]), int(tmp[1])])
+        elif line_ct <= 3 + o + n:
+            tmp = line.strip().split(',')
+            start_loc.append([int(tmp[0]), int(tmp[1])])
+        else:
+            tmp = line.strip().split(',')
+            end_loc.append([int(tmp[0]), int(tmp[1])])
+    return SpeedRacer(s, n, o, obstacle_loc, start_loc, end_loc)
+
+
 class SpeedRacer(object):
     def __init__(self, s, n, o, obstacle_loc, start_loc, end_loc):
         self.s = s
@@ -138,12 +164,13 @@ class SpeedRacer(object):
             self.next_state_ltensor.append(state_i_row)
             self.move_ltensor.append(move_i_row)
 
-    def _init_Rmat(self, destination):
+    def _init_Rmat(self, car_id):
         """
         Initialize Rmat for only one car with destination location.
         destination = [dx,dy]
         """
         s = self.s
+        destination = self.end_loc[car_id]
         Rmat = np.zeros(shape=(s, s), dtype=np.float32)
         for i in range(s):
             for j in range(s):
@@ -185,7 +212,7 @@ class SpeedRacer(object):
             i_slice = self.next_state_ltensor[i]
             for j in range(s):
                 j_tuple = i_slice[j]
-                if [i, j] != self.end_loc[i]:
+                if [i, j] != self.end_loc[car_id]:
                     for ii in range(4):
                         for jj in range(4):
                             index = j_tuple[ii][jj]
@@ -195,18 +222,19 @@ class SpeedRacer(object):
         s = self.s
         assert Umat.shape == (s, s)
         delta_Umat = np.abs(Umat - self.Umat[car_id], dtype=np.float32)
-        max_delta_U = np.max(delta_Umat, dtype=np.float32)
+        max_delta_U = np.max(delta_Umat)
         if max_delta_U > self.threshold:
             return False  # not convergent yet
         else:
             return True  # already convergent
 
-    def _init_Ptensor(self, destination):
+    def _init_Ptensor(self, car_id):
         """
         Initialize Ptensor with [0.7, 0.1, 0.1, 0.1] for each action,
         except the destination location with [1, 1, 1, 1].
         """
         s = self.s
+        destination = self.end_loc[car_id]
         self.Ptensor = np.ones(shape=(s, s, 4, 4), dtype=np.float32)
         self.Ptensor[:, :, :, 0] *= 0.7
         self.Ptensor[:, :, :, 1:] *= 0.1
@@ -218,14 +246,15 @@ class SpeedRacer(object):
     def mdp_solve(self):
         self.set_update_param()
         self.set_reward_param()
+        self._init_Umat()
         self._make_state_move_tensor()
         for i in range(self.n):
-            self.value_iteration_one_car(car_id=i, start=self.start_loc[i], destination=self.end_loc[i])
+            self.value_iteration_one_car(car_id=i)
 
-    def value_iteration_one_car(self, car_id, start, destination):
+    def value_iteration_one_car(self, car_id):
         s = self.s
-        self._init_Rmat(destination)
-        self._init_Ptensor(destination)
+        self._init_Rmat(car_id)
+        self._init_Ptensor(car_id)
         Umat_tmp = np.zeros(shape=(s, s), dtype=np.float32)
         Utmp = np.zeros(shape=(s, s, 4), dtype=np.float32)
 
@@ -235,36 +264,48 @@ class SpeedRacer(object):
             self._map_Utensor(car_id)
             Utmp = np.sum(self.Utensor * self.Ptensor, axis=3)
             Umat_tmp = np.max(Utmp, axis=2) + self.Rmat
-            # np.sum(self.Utensor * self.Ptensor, axis=3, out=Utmp, dtype=np.float32)
-            # np.max(Utmp, axis=2, out=Umat_tmp)
-            # np.add(Umat_tmp, self.Rmat, out=Umat_tmp, dtype=np.float32)
-            self.Umat[car_id] = Umat_tmp.copy()
             if self._Umat_convergence(car_id, Umat_tmp):
+                self.Umat[car_id] = Umat_tmp.copy()
                 self.iter_ct.append(iter_ct)
                 break
+            self.Umat[car_id] = Umat_tmp.copy()
 
+    def best_policy(self):
+        self.action_map = []
+        self.action_char_map = []
+        for id in range(self.n):
+            self.best_policy_one_cart(id)
 
-def problem_generator(in_path):
-    # using list is 3-4 times faster than using Numpy.load()
-    line_ct = 0
-    obstacle_loc = []
-    start_loc = []
-    end_loc = []
-    for line in open(in_path, 'r'):
-        line_ct += 1
-        if line_ct == 1:
-            s = int(line.strip())  # size of grid
-        elif line_ct == 2:
-            n = int(line.strip())  # number of cars
-        elif line_ct == 3:
-            o = int(line.strip())  # number of obstacles
-        elif line_ct < o + 3:
-            tmp = line.strip().split(',')
-            obstacle_loc.append([int(tmp[0]), int(tmp[1])])
-        elif line_ct < 3 + o + n:
-            tmp = line.strip().split(',')
-            start_loc.append([int(tmp[0]), int(tmp[1])])
-        else:
-            tmp = line.strip().split(',')
-            end_loc.append([int(tmp[0]), int(tmp[1])])
-    return SpeedRacer(s, n, o, obstacle_loc, start_loc, end_loc)
+    def best_policy_one_cart(self, car_id):
+        self._map_Utensor(car_id)
+        self._init_Ptensor(car_id)
+        expect_U = np.sum(self.Utensor * self.Ptensor, axis=3)
+        choice = np.argmax(expect_U, axis=2)
+        self._to_move(car_id, choice)
+
+    def _to_move(self, car_id, choice):
+        act_list = ['N', 'S', 'E', 'W']
+        act_char_list = ['^', 'v', '>', '<']
+        s = self.s
+        destination = self.end_loc[car_id]
+        act_map = [[None for ii in range(s)] for jj in range(s)]
+        act_char_map = [[None for ii in range(s)] for jj in range(s)]
+        for i in range(s):
+            for j in range(s):
+                if [i, j] != destination:
+                    action = act_list[choice[i, j]]
+                    action_char = act_char_list[choice[i, j]]
+                    act_map[i][j] = action
+                    act_char_map[i][j] = action_char
+        act_map[destination[0]][destination[1]] = 'X'
+        act_char_map[destination[0]][destination[1]] = 'X'
+        self.action_map.append(act_map)
+        self.action_char_map.append(act_char_map)
+
+    def print_policy(self, car_id):
+        s = self.s
+        for i in range(s):
+            for j in range(s):
+                print(self.action_char_map[car_id][j][i], end=' ')
+            print('')
+        print('')
