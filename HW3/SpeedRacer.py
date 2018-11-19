@@ -61,28 +61,16 @@ class SpeedRacer(object):
         self.Rgas = Rgas
         self.Rdestination = Rdestination
 
-    # TODO: THE CORRECTED VRSION
-    # def _get_action_order(self, action):
-    #     if action == 'N':
-    #         act_order = ['N', 'W', 'E', 'S']
-    #     elif action == 'S':
-    #         act_order = ['S', 'E', 'W', 'N']
-    #     elif action == 'E':
-    #         act_order = ['E', 'N', 'S', 'W']
-    #     else:
-    #         act_order = ['W', 'S', 'N', 'E']
-    #     return act_order
 
-    # TODO: THE WRONG VRSION
     def _get_action_order(self, action):
         if action == 'N':
-            act_order = ['N', 'W', 'E', 'S', 'S']
+            act_order = ['N', 'W', 'E', 'S']
         elif action == 'S':
-            act_order = ['S', 'E', 'W', 'N', 'N']
+            act_order = ['S', 'E', 'W', 'N']
         elif action == 'E':
-            act_order = ['E', 'N', 'S', 'W', 'W']
+            act_order = ['E', 'N', 'S', 'W']
         else:
-            act_order = ['W', 'S', 'N', 'E', 'E']
+            act_order = ['W', 'S', 'N', 'E']
         return act_order
 
     def _get_action_dict(self, index):
@@ -182,7 +170,7 @@ class SpeedRacer(object):
                     Rmat[i, j] = self.Rdestination + self.Rgas
                 else:
                     Rmat[i, j] = self.Rgas
-        self.Rmat = Rmat.astype(np.float32)
+        self.Rmat.append(Rmat.astype(np.float32))
 
     # def _set_Rtensor(self):
     #     s = self.s
@@ -265,7 +253,7 @@ class SpeedRacer(object):
             iter_ct += 1
             self._map_Utensor(car_id)
             Utmp = np.sum(self.Utensor * self.Ptensor, axis=3)
-            Umat_tmp = np.max(Utmp, axis=2) + self.Rmat
+            Umat_tmp = np.max(Utmp, axis=2) + self.Rmat[car_id]
             if self._Umat_convergence(car_id, Umat_tmp):
                 self.Umat[car_id] = Umat_tmp.copy()
                 self.iter_ct.append(iter_ct)
@@ -316,6 +304,7 @@ class SpeedRacer(object):
     def simulation(self):
         track = [[[] for i in range(10)] for car_id in range(self.n)]
         move_track = [[[] for i in range(10)] for car_id in range(self.n)]
+        score = np.zeros(shape=(self.n))
         for i in range(10):
             seed(i)
             p_list = random_sample(1000000)
@@ -344,5 +333,7 @@ class SpeedRacer(object):
                     track[car_id][i].append(cur_pos)
                     move_track[car_id][i].append(move)
                     cur_pos = next_pos
+                    score[car_id] += self.Rmat[car_id][cur_pos[0], cur_pos[1]]
                     step_ct += 1
-                
+        score = np.floor(score / 10)
+        return score
