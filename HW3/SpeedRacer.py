@@ -144,31 +144,41 @@ class SpeedRacer(object):
     # def _map_grid(self):
     #     grid_list = []
 
-    def _make_Rmat(self):
+    def _set_Rmat(self, destination):
         s = self.s
         Rmat = np.zeros(shape=(s, s))
         for i in range(s):
             for j in range(s):
                 if [i, j] in self.obstacle_loc:  # self.obstacle_loc is a list
                     Rmat[i, j] = -101
-                elif [i, j] == self.destination:
+                elif [i, j] == destination:
                     Rmat[i, j] = 99
                 else:
                     Rmat[i, j] = -1
         self._Rmat = Rmat
 
-    def _make_Rtensor(self):
+    # def _set_Rtensor(self):
+    #     s = self.s
+    #     Rtensor = np.zeros(shape=(s, s, 4, 4))
+    #     for i in range(s):
+    #         i_slice = self.next_state_ltensor[i]
+    #         for j in range(s):
+    #             j_tuple = i_slice[j]
+    #             for ii in range(4):
+    #                 for jj in range(4):
+    #                     index = j_tuple[ii][jj]
+    #                     Rtensor[i, j, ii, jj] = self._Rmat[index[0], index[1]]
+    #     self.Rtensor = Rtensor
+
+    def _set_Ptensor(self, destination):
         s = self.s
-        Rtensor = np.zeros(shape=(s, s, 4, 4))
-        for i in range(s):
-            i_slice = self.next_state_ltensor[i]  # TODO: Need to clearify 'self._next_state_ltensor'
-            for j in range(s):
-                j_tuple = i_slice[j]
-                for ii in range(4):
-                    for jj in range(4):
-                        index = j_tuple[ii][jj]
-                        Rtensor[i, j, ii, jj] = self._Rmat[index[0], index[1]]
-        self.Rtensor = Rtensor
+        self.Ptensor = np.ones(shape=(s, s, 4, 4), dtype=float)
+        self.Ptensor[:, :, :, 0] *= 0.7
+        self.Ptensor[:, :, :, 1:] *= 0.1
+        dx = destination[0]
+        dy = destination[1]
+        self.Rtensor[dx, dy, :, :] /= np.array(
+            [[0.7, 0.1, 0.1, 0.1], [0.7, 0.1, 0.1, 0.1], [0.7, 0.1, 0.1, 0.1], [0.7, 0.1, 0.1, 0.1]])
 
     def mdp_solve(self):
         pass
