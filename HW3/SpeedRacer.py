@@ -9,7 +9,8 @@
 from __future__ import print_function
 from copy import copy
 import numpy as np
-from itertools import combinations, permutations
+from numpy.random import random_sample
+from numpy.random import seed
 
 
 def problem_generator(in_path):
@@ -48,6 +49,7 @@ class SpeedRacer(object):
         self.end_loc = end_loc
         self.Rmat = []
         self.iter_ct = []
+        self.choice = []
 
     def set_update_param(self, gamma=0.9, epsilon=0.1):
         self.gamma = gamma
@@ -274,13 +276,14 @@ class SpeedRacer(object):
         self.action_map = []
         self.action_char_map = []
         for id in range(self.n):
-            self.best_policy_one_cart(id)
+            self.best_policy_one_car(id)
 
-    def best_policy_one_cart(self, car_id):
+    def best_policy_one_car(self, car_id):
         self._map_Utensor(car_id)
         self._init_Ptensor(car_id)
         expect_U = np.sum(self.Utensor * self.Ptensor, axis=3)
         choice = np.argmax(expect_U, axis=2)
+        self.choice.append(choice)
         self._to_move(car_id, choice)
 
     def _to_move(self, car_id, choice):
@@ -306,6 +309,40 @@ class SpeedRacer(object):
         s = self.s
         for i in range(s):
             for j in range(s):
-                print(self.action_char_map[car_id][j][i], end=' ')
+                print(self.action_char_map[car_id][j][i], end=' ')  # reverse the order of x and y!!
             print('')
         print('')
+
+    def simulation(self):
+        track = [[[] for i in range(10)] for car_id in range(self.n)]
+        move_track = [[[] for i in range(10)] for car_id in range(self.n)]
+        for i in range(10):
+            seed(i)
+            p_list = random_sample(1000000)
+            for car_id in range(self.n):
+                choice = self.choice[car_id]
+                cur_pos = self.start_loc[car_id]
+                destination = self.end_loc[car_id]
+                best_action_map = self.action_map[car_id]
+                step_ct = 0
+                while cur_pos != destination:
+                    x = cur_pos[0]
+                    y = cur_pos[1]
+                    best_act_id = choice[x, y]
+                    if p_list[step_ct] <= 0.7:
+                        next_pos = self.next_state_ltensor[x][y][best_act_id][0]
+                        move = self.move_ltensor[x][y][best_act_id][0]
+                    elif p_list[step_ct] <= 0.8:
+                        next_pos = self.next_state_ltensor[x][y][best_act_id][1]
+                        move = self.move_ltensor[x][y][best_act_id][1]
+                    elif p_list[step_ct] <= 0.9:
+                        next_pos = self.next_state_ltensor[x][y][best_act_id][2]
+                        move = self.move_ltensor[x][y][best_act_id][2]
+                    else:
+                        next_pos = self.next_state_ltensor[x][y][best_act_id][3]
+                        move = self.move_ltensor[x][y][best_act_id][3]
+                    track[car_id][i].append(cur_pos)
+                    move_track[car_id][i].append(move)
+                    cur_pos = next_pos
+                    step_ct += 1
+                
