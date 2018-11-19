@@ -21,10 +21,15 @@ class SpeedRacer(object):
         self.start_loc = start_loc
         self.end_loc = end_loc
 
-    def set_reward(self, crash=-100, gas=-1, destination=100):
-        self.crash = crash
-        self.gas = gas
-        self.destination = destination
+    def set_parameter(self, gamma=0.9, epsilon=0.1):
+        self.gamma = gamma
+        self.epsilon = epsilon
+        self.threshold = epsilon * (1 - gamma) / gamma
+
+    def set_reward(self, Rcrash=-100, Rgas=-1, Rdestination=100):
+        self.Rcrash = Rcrash
+        self.Rgas = Rgas
+        self.Rdestination = Rdestination
 
     # TODO: THE CORRECTED VRSION
     # def _get_action_order(self, action):
@@ -127,20 +132,6 @@ class SpeedRacer(object):
         return {'index': [[index[i] + act_dict[d][i] for i in range(2)] for d in act_order],
                 'move': [act_dict[d] for d in act_order]}
 
-    # # TODO: speed
-    # def trans_numpy(self, index, action):
-    #     act_dict = self._get_action_dict(index)
-    #     act_order = self._get_action_order(action)
-    #     move = np.array([act_dict[d] for d in act_order], dtype=int)
-    #     return {'move': move, 'index': index.astype(int) + move}
-
-    # # TODO: speed
-    # def trans_list(self, index, action):
-    #     act_dict = self._get_action_dict(index)
-    #     act_order = self._get_action_order(action)
-    #     return {'index': [[index[i] + act_dict[d][i] for i in range(2)] for d in act_order],
-    #             'move': [act_dict[d] for d in act_order]}
-
     # def _map_grid(self):
     #     grid_list = []
 
@@ -150,11 +141,11 @@ class SpeedRacer(object):
         for i in range(s):
             for j in range(s):
                 if [i, j] in self.obstacle_loc:  # self.obstacle_loc is a list
-                    Rmat[i, j] = -101
+                    Rmat[i, j] = self.Rcrash + self.Rgas
                 elif [i, j] == destination:
-                    Rmat[i, j] = 99
+                    Rmat[i, j] = self.Rdestination + self.Rgas
                 else:
-                    Rmat[i, j] = -1
+                    Rmat[i, j] = self.Rgas
         self._Rmat = Rmat
 
     # def _set_Rtensor(self):
@@ -169,6 +160,29 @@ class SpeedRacer(object):
     #                     index = j_tuple[ii][jj]
     #                     Rtensor[i, j, ii, jj] = self._Rmat[index[0], index[1]]
     #     self.Rtensor = Rtensor
+
+    def _map_Utensor(self, destination):
+        s = self.s
+        self.Utensor = np.zeros(shape=(s, s, 4, 4))
+        for i in range(s):
+            i_slice = self.next_state_ltensor[i]
+            for j in range(s):
+                j_tuple = i_slice[j]
+                if [i, j] != destination:
+                    for ii in range(4):
+                        for jj in range(4):
+                            index = j_tuple[ii][jj]
+                            self.Utensor[i, j, ii, jj] = self.Umat[index[0], index[1]]
+
+    def _Umat_convergence(self, Umat):
+        s = self.s
+        assert Umat.shape == (s, s)
+        delta_Umat = np.abs(Umat - self.Umat)
+        max_delta_U = np.max(delta_Umat)
+        if max_delta_U > self.threshold:
+            return False  # not convergent yet
+        else:
+            return True  # already convergent
 
     def _set_Ptensor(self, destination):
         s = self.s
