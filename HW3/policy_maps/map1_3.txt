@@ -1,0 +1,26 @@
+My map:
+v v v v v < < < < <
+v v v v v < < < < ^
+v v v v v < < ^ ^ ^
+v < < v v < v v v <
+v < < > v v v v < <
+v < < > v v < < < <
+v v v v v < < < < <
+> > X < < < < ^ < ^
+> > ^ < < < < v < <
+> ^ ^ < < < < < < <
+
+Standard map:
+v v v v v < < < < <
+v v v v v < < < < ^
+v v v v v < < ^ v ^
+v v v v v v v v v <
+v v < v v v v v < <
+v v < v v v < < < <
+v v v v v < < < < <
+> > X < < < < < < ^
+> > ^ < < < < v < <
+> ^ ^ ^ < < < < < <
+
+Mean Score:
+[88. 97. 84. 87. 91.]

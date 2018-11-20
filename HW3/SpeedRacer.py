@@ -48,6 +48,7 @@ class SpeedRacer(object):
         self.start_loc = start_loc
         self.end_loc = end_loc
         self.Rmat = []
+        self.Umat = []
         self.iter_ct = []
         self.choice = []
 
@@ -60,7 +61,6 @@ class SpeedRacer(object):
         self.Rcrash = Rcrash
         self.Rgas = Rgas
         self.Rdestination = Rdestination
-
 
     def _get_action_order(self, action):
         if action == 'N':
@@ -190,7 +190,20 @@ class SpeedRacer(object):
         Initialize Umat to all-zero matrix.
         """
         s = self.s
-        self.Umat = [np.zeros(shape=(s, s), dtype=np.float32) for i in range(self.n)]
+        for car_id in range(self.n):
+            destination = self.end_loc[car_id]
+            Umat = np.zeros(shape=(s, s), dtype=np.float32)
+            for i in range(s):
+                for j in range(s):
+                    if [i, j] in self.obstacle_loc:  # self.obstacle_loc is a list
+                        Umat[i, j] = self.Rcrash + self.Rgas
+                    elif [i, j] == destination:
+                        Umat[i, j] = self.Rdestination + self.Rgas
+                    else:
+                        Umat[i, j] = self.Rgas
+            self.Umat.append(Umat.astype(np.float32))
+
+        # self.Umat = [np.zeros(shape=(s, s), dtype=np.float32) for i in range(self.n)]
 
     def _map_Utensor(self, car_id):
         """
@@ -253,7 +266,7 @@ class SpeedRacer(object):
             iter_ct += 1
             self._map_Utensor(car_id)
             Utmp = np.sum(self.Utensor * self.Ptensor, axis=3)
-            Umat_tmp = np.max(Utmp, axis=2) + self.Rmat[car_id]
+            Umat_tmp = self.gamma * np.max(Utmp, axis=2) + self.Rmat[car_id]
             if self._Umat_convergence(car_id, Umat_tmp):
                 self.Umat[car_id] = Umat_tmp.copy()
                 self.iter_ct.append(iter_ct)
@@ -337,3 +350,49 @@ class SpeedRacer(object):
                     step_ct += 1
         score = np.floor(score / 10)
         return score
+
+
+def move_to_char(move):
+    if move == [0, -1]:
+        return '^'
+    if move == [-1, 0]:
+        return '<'
+    if move == [1, 0]:
+        return '>'
+    if move == [0, 1]:
+        return 'v'
+
+
+def index_parse(index_str):
+    index = index_str[1:-1].split(', ')
+    return [int(index[0]), int(index[1])]
+
+
+def policy_parse(in_path, s):
+    policy = [[None for jj in range(s)] for kk in range(s)]
+    for line in open(in_path, 'r'):
+        tmp = line.strip().split(': ')
+        idx = index_parse(tmp[0])
+        if tmp[1] == 'None':
+            policy[idx[0]][idx[1]] = 'X'
+        else:
+            move = index_parse(tmp[1])
+            policy[idx[0]][idx[1]] = move_to_char(move)
+    for i in range(s):
+        for j in range(s):
+            print(policy[j][i], end=' ')
+        print('')
+    print('')
+    return policy
+
+
+def answer_read(in_path):
+    ans = []
+    print('[', end='')
+    for line in open(in_path, 'r'):
+        ans.append(int(line.strip()))
+    for a in ans:
+        print('%d, ' % a, end='')
+    print(']', end='')
+    print('')
+    return ans
