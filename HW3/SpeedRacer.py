@@ -162,7 +162,7 @@ class SpeedRacer(object):
         """
         s = self.s
         destination = self.end_loc[car_id]
-        Rmat = np.zeros(shape=(s, s), dtype=np.float32)
+        Rmat = np.zeros(shape=(s, s))
         for i in range(s):
             for j in range(s):
                 if [i, j] in self.obstacle_loc:  # self.obstacle_loc is a list
@@ -171,7 +171,7 @@ class SpeedRacer(object):
                     Rmat[i, j] = self.Rdestination + self.Rgas
                 else:
                     Rmat[i, j] = self.Rgas
-        self.Rmat.append(Rmat.astype(np.float32))
+        self.Rmat.append(Rmat)
 
     def _init_Umat(self):
         """
@@ -180,7 +180,7 @@ class SpeedRacer(object):
         s = self.s
         for car_id in range(self.n):
             destination = self.end_loc[car_id]
-            Umat = np.zeros(shape=(s, s), dtype=np.float32)
+            Umat = np.zeros(shape=(s, s))
             for i in range(s):
                 for j in range(s):
                     if [i, j] in self.obstacle_loc:  # self.obstacle_loc is a list
@@ -189,14 +189,14 @@ class SpeedRacer(object):
                         Umat[i, j] = self.Rdestination + self.Rgas
                     else:
                         Umat[i, j] = self.Rgas
-            self.Umat.append(Umat.astype(np.float32))
+            self.Umat.append(Umat)
 
     def _map_Utensor(self, car_id):
         """
         map Umat to Utensor for update of the next generation
         """
         s = self.s
-        self.Utensor = np.zeros(shape=(s, s, 4, 4), dtype=np.float32)
+        self.Utensor = np.zeros(shape=(s, s, 4, 4))
         for i in range(s):
             i_slice = self.next_state_ltensor[i]
             for j in range(s):
@@ -210,7 +210,7 @@ class SpeedRacer(object):
     def _Umat_convergence(self, car_id, Umat):
         s = self.s
         assert Umat.shape == (s, s)
-        delta_Umat = np.abs(Umat - self.Umat[car_id], dtype=np.float32)
+        delta_Umat = np.abs(Umat - self.Umat[car_id])
         max_delta_U = np.max(delta_Umat)
         if max_delta_U > self.threshold:
             return False  # not convergent yet
@@ -224,7 +224,7 @@ class SpeedRacer(object):
         """
         s = self.s
         destination = self.end_loc[car_id]
-        self.Ptensor = np.ones(shape=(s, s, 4, 4), dtype=np.float32)
+        self.Ptensor = np.ones(shape=(s, s, 4, 4))
         self.Ptensor[:, :, :, 0] *= 0.7
         self.Ptensor[:, :, :, 1:] *= 0.1
         dx = destination[0]
@@ -244,8 +244,8 @@ class SpeedRacer(object):
         s = self.s
         self._init_Rmat(car_id)
         self._init_Ptensor(car_id)
-        Umat_tmp = np.zeros(shape=(s, s), dtype=np.float32)
-        Utmp = np.zeros(shape=(s, s, 4), dtype=np.float32)
+        Umat_tmp = np.zeros(shape=(s, s))
+        Utmp = np.zeros(shape=(s, s, 4))
 
         iter_ct = 0
         while True:
@@ -336,73 +336,3 @@ class SpeedRacer(object):
                     step_ct += 1
         score = np.floor(score / 10)
         return score.astype(int)
-
-
-def move_to_char(move):
-    if move == [0, -1]:
-        return '^'
-    if move == [-1, 0]:
-        return '<'
-    if move == [1, 0]:
-        return '>'
-    if move == [0, 1]:
-        return 'v'
-
-
-def index_parse(index_str):
-    index = index_str[1:-1].split(', ')
-    return [int(index[0]), int(index[1])]
-
-
-def policy_parse(in_path, s):
-    policy = [[None for jj in range(s)] for kk in range(s)]
-    for line in open(in_path, 'r'):
-        tmp = line.strip().split(': ')
-        idx = index_parse(tmp[0])
-        if tmp[1] == 'None':
-            policy[idx[0]][idx[1]] = 'X'
-        else:
-            move = index_parse(tmp[1])
-            policy[idx[0]][idx[1]] = move_to_char(move)
-    for i in range(s):
-        for j in range(s):
-            print(policy[j][i], end=' ')
-        print('')
-    print('')
-    return policy
-
-
-def answer_read(in_path):
-    ans = []
-    print('[', end='')
-    for line in open(in_path, 'r'):
-        ans.append(int(line.strip()))
-    for a in ans:
-        print('%d, ' % a, end='')
-    print(']', end='')
-    print('')
-    return ans
-
-
-def make_simulation_large_case():
-    out_path = './my_simulation.txt'
-    with open(out_path, 'w') as out_f:
-        for case_id in range(47):
-            if case_id != 11:
-                p = problem_generator('./HW3_Test_Cases/input%d.txt' % case_id)
-                s = time()
-                p.mdp_solve()
-                p.best_policy()
-                ans = p.simulation()
-                e = time()
-                print('======================================================', file=out_f)
-                print('Test File: ', end='', file=out_f)
-                print('./input%d.txt' % case_id, file=out_f)
-                print(ans, file=out_f)
-                print('Use Time: %.10f  s' % (e - s), file=out_f)
-
-                print('======================================================')
-                print('Test File: ', end='')
-                print('./input%d.txt' % case_id)
-                print(ans)
-                print('Use Time: %.10f  s' % (e - s))

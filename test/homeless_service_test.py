@@ -90,15 +90,15 @@ class HomelessServiceTestCase(unittest.TestCase):
             answer = int(f.readline().strip())
         self.assertEqual(result, answer)
 
-    def test_input21(self):
-        """Test on case input21.txt"""
-        in_path = './HW2/input21.txt'
-        problem = hs.problem_generator(in_path)
-        problem.solve()
-        result = problem.SPLA_best_first_id
-        with open('./HW2/output21.txt', 'r') as f:
-            answer = int(f.readline().strip())
-        self.assertEqual(result, answer)
+    # def test_input21(self):
+    #     """Test on case input21.txt"""
+    #     in_path = './HW2/input21.txt'
+    #     problem = hs.problem_generator(in_path)
+    #     problem.solve()
+    #     result = problem.SPLA_best_first_id
+    #     with open('./HW2/output21.txt', 'r') as f:
+    #         answer = int(f.readline().strip())
+    #     self.assertEqual(result, answer)
 
 
 if __name__ == "__main__":

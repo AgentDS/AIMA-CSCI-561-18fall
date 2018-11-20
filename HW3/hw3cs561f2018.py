@@ -11,14 +11,12 @@ import numpy as np
 from time import time
 
 if __name__ == '__main__':
-    case_id = 0
-    p0 = sr.problem_generator('input%d.txt' % case_id)
-    s = time()
-    p0.mdp_solve()
-    e = time()
-    print("Time: %.10s s" % (e - s))
-    p0.best_policy()
-    print("Mean Score:")
-    print(p0.simulation())
-    print("Answer:")
-    sr.answer_read('output%d.txt' % case_id)
+    in_path = 'input.txt'
+    out_path = 'output.txt'
+    problem = sr.problem_generator(in_path)
+    problem.mdp_solve()
+    problem.best_policy()
+    score = problem.simulation()
+    with open(out_path, 'w') as out:
+        for i in range(problem.n):
+            print('%d' % score[i], file=out)
