@@ -18,18 +18,7 @@ if __name__ == '__main__':
     e = time()
     print("Time: %.10s s" % (e - s))
     p0.best_policy()
-    # print("My map: ")
-    # p0.print_policy(0)
-    # print("Standard map: ")
-    # sr.policy_parse('testcase policies/policy2_0.txt', p0.s)
     print("Mean Score:")
     print(p0.simulation())
     print("Answer:")
     sr.answer_read('output%d.txt' % case_id)
-
-
-    # p0.print_policy(1)
-    # p0.print_policy(2)
-    # p0.print_policy(3)
-    # p0.print_policy(4)
-    # p0.print_policy(5)

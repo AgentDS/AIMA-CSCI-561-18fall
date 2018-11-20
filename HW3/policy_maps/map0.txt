@@ -1,12 +1,3 @@
-My map:
-X < <
-^ ^ ^
-> > ^
-
-Standard map:
 X < <
 ^ ^ ^
 > ^ ^
-
-Mean Score:
-[95.]

@@ -11,6 +11,7 @@ from copy import copy
 import numpy as np
 from numpy.random import random_sample
 from numpy.random import seed
+from time import time
 
 
 def problem_generator(in_path):
@@ -172,19 +173,6 @@ class SpeedRacer(object):
                     Rmat[i, j] = self.Rgas
         self.Rmat.append(Rmat.astype(np.float32))
 
-    # def _set_Rtensor(self):
-    #     s = self.s
-    #     Rtensor = np.zeros(shape=(s, s, 4, 4))
-    #     for i in range(s):
-    #         i_slice = self.next_state_ltensor[i]
-    #         for j in range(s):
-    #             j_tuple = i_slice[j]
-    #             for ii in range(4):
-    #                 for jj in range(4):
-    #                     index = j_tuple[ii][jj]
-    #                     Rtensor[i, j, ii, jj] = self._Rmat[index[0], index[1]]
-    #     self.Rtensor = Rtensor
-
     def _init_Umat(self):
         """
         Initialize Umat to all-zero matrix.
@@ -202,8 +190,6 @@ class SpeedRacer(object):
                     else:
                         Umat[i, j] = self.Rgas
             self.Umat.append(Umat.astype(np.float32))
-
-        # self.Umat = [np.zeros(shape=(s, s), dtype=np.float32) for i in range(self.n)]
 
     def _map_Utensor(self, car_id):
         """
@@ -349,7 +335,7 @@ class SpeedRacer(object):
                     score[car_id] += self.Rmat[car_id][cur_pos[0], cur_pos[1]]
                     step_ct += 1
         score = np.floor(score / 10)
-        return score
+        return score.astype(int)
 
 
 def move_to_char(move):
@@ -396,3 +382,27 @@ def answer_read(in_path):
     print(']', end='')
     print('')
     return ans
+
+
+def make_simulation_large_case():
+    out_path = './my_simulation.txt'
+    with open(out_path, 'w') as out_f:
+        for case_id in range(47):
+            if case_id != 11:
+                p = problem_generator('./HW3_Test_Cases/input%d.txt' % case_id)
+                s = time()
+                p.mdp_solve()
+                p.best_policy()
+                ans = p.simulation()
+                e = time()
+                print('======================================================', file=out_f)
+                print('Test File: ', end='', file=out_f)
+                print('./input%d.txt' % case_id, file=out_f)
+                print(ans, file=out_f)
+                print('Use Time: %.10f  s' % (e - s), file=out_f)
+
+                print('======================================================')
+                print('Test File: ', end='')
+                print('./input%d.txt' % case_id)
+                print(ans)
+                print('Use Time: %.10f  s' % (e - s))
