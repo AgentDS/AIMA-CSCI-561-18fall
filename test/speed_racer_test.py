@@ -90,20 +90,6 @@ class SpeedRacerTestCase(unittest.TestCase):
         answer = self._get_answer(path + out_path)
         assert_array_equal(result, answer)
 
-    # def test_input5(self):
-    #     """Test on case input5.txt"""
-    #     path = './HW3/HW3_Test_Cases/'
-    #     case_id = 5
-    #     in_path = 'input%d.txt' % case_id
-    #     problem = sr.problem_generator(path + in_path)
-    #     problem.mdp_solve()
-    #     problem.best_policy()
-    #     result = problem.simulation()
-    #
-    #     out_path = 'output%d.txt' % case_id
-    #     answer = self._get_answer(path + out_path)
-    #     assert_array_equal(result, answer)
-
     def test_input6(self):
         """Test on case input6.txt"""
         path = './HW3/HW3_Test_Cases/'
@@ -117,7 +103,6 @@ class SpeedRacerTestCase(unittest.TestCase):
         out_path = 'output%d.txt' % case_id
         answer = self._get_answer(path + out_path)
         assert_array_equal(result, answer)
-
 
     def test_input7(self):
         """Test on case input7.txt"""
@@ -165,20 +150,6 @@ class SpeedRacerTestCase(unittest.TestCase):
         """Test on case input10.txt"""
         path = './HW3/HW3_Test_Cases/'
         case_id = 10
-        in_path = 'input%d.txt' % case_id
-        problem = sr.problem_generator(path + in_path)
-        problem.mdp_solve()
-        problem.best_policy()
-        result = problem.simulation()
-
-        out_path = 'output%d.txt' % case_id
-        answer = self._get_answer(path + out_path)
-        assert_array_equal(result, answer)
-
-    def test_input12(self):
-        """Test on case input12.txt"""
-        path = './HW3/HW3_Test_Cases/'
-        case_id = 12
         in_path = 'input%d.txt' % case_id
         problem = sr.problem_generator(path + in_path)
         problem.mdp_solve()
