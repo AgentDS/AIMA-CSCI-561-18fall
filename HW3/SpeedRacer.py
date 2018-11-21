@@ -269,7 +269,7 @@ class SpeedRacer(object):
         self._map_Utensor(car_id)
         self._init_Ptensor(car_id)
         expect_U = np.sum(self.Utensor * self.Ptensor, axis=3)
-        choice = np.argmax(expect_U, axis=2)
+        choice = np.argmax(np.round(expect_U, 13), axis=2)  # use np.round() to avoid precision problem
         self.choice.append(choice)
         self._to_move(car_id, choice)
 
