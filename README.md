@@ -23,3 +23,7 @@ Python implementation for CSCI 561 Foundations of Artificial Intelligence 2018fa
 
   => Without any pruning
 
+- [HW3](./HW3): MDP problem in SpeedRacer ([description](./HW3/F18HW3 UPDATED.pdf))
+
+  => Be able to run the largest test case [input11.txt](./HW3/HW3_Test_Cases/input11.txt) (100x100 grids, 8 cars) in 1min on Vocareum platform by updating all utility value at once for each iteration using 4D numpy array of shape $s \times s \times 4 \times 4$, where $s$ is the row/column size of the grid. (Without this method, it might take more than 11min for input11.txt)
+

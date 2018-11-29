@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaba0bcc-f24b-410f-8b09-69d76211ca1f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/HW3/xxx.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/SpeedRacer.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/SpeedRacer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/ex.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/ex.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/my_simulation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/my_simulation.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/seed9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves1_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves1_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves1_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves1_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves1_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves2_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves2_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves2_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves2_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves2_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/testcase_simulation_moves/simulationMoves2_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.txt" beforeDir="false" afterPath="$PROJECT_DIR$/package.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW3/xxx.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/xxx.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,7 +16,7 @@
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$case_time.coverage" NAME="case_time Coverage Results" MODIFIED="1540268897573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw1cs561f2018.coverage" NAME="hw1cs561f2018 Coverage Results" MODIFIED="1536911902820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1b" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$xxxx.coverage" NAME="xxxx Coverage Results" MODIFIED="1542678735091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
-    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$xxx.coverage" NAME="xxx Coverage Results" MODIFIED="1542778384965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
+    <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$xxx.coverage" NAME="xxx Coverage Results" MODIFIED="1542871631182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$test_bench.coverage" NAME="test_bench Coverage Results" MODIFIED="1542693162531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$hw1acs561f18.coverage" NAME="hw1acs561f18 Coverage Results" MODIFIED="1535827569740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1a" />
     <SUITE FILE_PATH="coverage/AIMA_CSCI_561_18fall$Unittests_for_speed_racer_test_SpeedRacerTestCase_test_input0.coverage" NAME="Unittests for speed_racer_test.SpeedRacerTestCase.test_input0 Coverage Results" MODIFIED="1542684276019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
@@ -75,47 +49,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="hw3cs561f2018.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-              <folding>
-                <element signature="e#183#220#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file leaf-file-name="xxx.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW3/xxx.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
-              <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+              <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
               <folding>
                 <element signature="e#173#210#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HW3/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1581">
-              <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpeedRacer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="271" column="76" selection-start-line="271" selection-start-column="76" selection-end-line="271" selection-end-column="76" />
-              <folding>
-                <element signature="e#181#218#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -429,16 +370,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" order="3" weight="0.29483038" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50080776" side_tool="true" weight="0.36" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49919224" weight="0.4827586" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.42344826" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.58068967" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.16551724" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24474959" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24878837" />
       <window_info anchor="right" id="R Packages" order="6" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" />
@@ -446,7 +386,7 @@
       <window_info anchor="right" id="SciView" order="3" weight="0.6558966" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49919224" weight="0.32413793" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49919224" weight="0.6786207" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -457,10 +397,11 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23424879" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -469,18 +410,17 @@
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.74068964" />
       <window_info anchor="right" id="R Packages" order="6" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.36" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827586" />
       <window_info anchor="right" x="0" y="0" width="270" height="600" id="Documentation" order="7" side_tool="true" weight="0.0638126" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4904552" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.16551724" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32965517" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.6415344" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="5" weight="0.32961932" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.36" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,12 +441,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="54" />
+      <option name="time" value="56" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="expect_U[6,0]" language="Python" />
-        <watch expression="expect_U[6,0,0] - expect_U[6,0,2]" language="Python" />
         <watch expression="newU = np.round(expect_U,10)" language="Python" />
         <watch expression="newU" language="Python" />
         <watch expression="newU[6,0,0] - newU[6,0,2]" language="Python" />
@@ -572,9 +511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -593,9 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -614,9 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -635,9 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -656,9 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -800,16 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-          <folding>
-            <element signature="e#183#220#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW3/output11.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -820,10 +734,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/hw3cs561f2018.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HW3/SpeedRacer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="271" column="76" selection-start-line="271" selection-start-column="76" selection-end-line="271" selection-end-column="76" />
+        <state relative-caret-position="62">
+          <caret line="271" selection-start-line="271" selection-end-line="271" />
           <folding>
             <element signature="e#181#218#0" expanded="true" />
           </folding>
@@ -833,7 +754,7 @@
     <entry file="file://$PROJECT_DIR$/HW3/xxx.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
-          <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <caret line="19" column="25" lean-forward="true" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding>
             <element signature="e#173#210#0" expanded="true" />
           </folding>
