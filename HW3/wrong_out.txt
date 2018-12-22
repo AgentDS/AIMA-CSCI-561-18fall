@@ -1,3 +1,0 @@
-case 5 wrong!
-case 12 wrong!
-case 44 wrong!
